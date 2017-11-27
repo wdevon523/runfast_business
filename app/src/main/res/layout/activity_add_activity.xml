@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.operation.goods.activity.add.AddActivityActivity"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.goods.activity.add.ActivityViewModel"/>
+
+        <import type="android.view.View"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <com.gxuc.runfast.business.widget.LabelEditText
+                style="@style/AddActivityEditTextStyle"
+                android:hint="请输入活动名称"
+                android:text="@={viewModel.name}"
+                app:labelPadding="@dimen/p27"
+                app:labelText="活动名称"
+                app:labelTextColor="@color/gray19"
+                app:labelTextSize="@dimen/t15"/>
+
+            <include layout="@layout/divider"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/AddActivityLabelViewStyle"
+                android:onClick="@{() -> view.showActivityTypePicker()}"
+                android:text="@{viewModel.typeName ?? @string/select_activity_type}"
+                android:textColor="@{viewModel.typeName.get() != null ? @color/mine_shaft : @color/iron}"
+                app:leftText="活动类型       "
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"
+                tools:text="满减活动"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/m10"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.type == 0 ? View.GONE : View.VISIBLE}">
+
+            <com.gxuc.runfast.business.widget.LabelEditText
+                style="@style/AddActivityEditTextStyle"
+                android:hint="请输入金额"
+                android:text="@={viewModel.full}"
+                android:visibility="@{viewModel.type == 1 || viewModel.type == 5 ? View.VISIBLE : View.GONE}"
+                app:labelPadding="@dimen/p72"
+                app:labelText="满"
+                app:labelTextColor="@color/gray19"
+                app:labelTextSize="@dimen/t15"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/AddActivityLabelViewStyle"
+                android:text="请选择菜单"
+                android:textColor="@color/iron"
+                android:onClick="@{() -> viewModel.selectGoods()}"
+                android:visibility="@{viewModel.type >= 2 &amp;&amp; viewModel.type &lt;= 4 ? View.VISIBLE : View.GONE}"
+                app:leftText="选择菜           "
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/m15"
+                android:background="@color/gray6"
+                android:visibility="@{viewModel.type != 5 ? View. VISIBLE : View.GONE}"/>
+
+            <com.gxuc.runfast.business.widget.LabelEditText
+                style="@style/AddActivityEditTextStyle"
+                android:hint="请输入金额"
+                android:text="@={viewModel.less}"
+                android:visibility="@{viewModel.type == 1 ? View. VISIBLE : View.GONE}"
+                app:labelPadding="@dimen/p72"
+                app:labelText="减"
+                app:labelTextColor="@color/gray19"
+                app:labelTextSize="@dimen/t15"/>
+
+            <com.gxuc.runfast.business.widget.LabelEditText
+                style="@style/AddActivityEditTextStyle"
+                android:hint="请输入折扣"
+                android:text="@={viewModel.discount}"
+                android:visibility="@{viewModel.type == 2 ? View. VISIBLE : View.GONE}"
+                app:labelPadding="@dimen/p28"
+                app:labelText="打多少折"
+                app:labelTextColor="@color/gray19"
+                app:labelTextSize="@dimen/t15"/>
+
+            <com.gxuc.runfast.business.widget.LabelEditText
+                style="@style/AddActivityEditTextStyle"
+                android:hint="请输入金额"
+                android:text="@={viewModel.disprice}"
+                android:visibility="@{viewModel.type == 4 ? View. VISIBLE : View.GONE}"
+                app:labelPadding="@dimen/p28"
+                app:labelText="特价价格"
+                app:labelTextColor="@color/gray19"
+                app:labelTextSize="@dimen/t15"/>
+
+            <com.gxuc.runfast.business.widget.LabelEditText
+                style="@style/AddActivityEditTextStyle"
+                android:hint="请输入要赠品"
+                android:text="@={viewModel.goods}"
+                android:visibility="@{viewModel.type == 3 ? View. VISIBLE : View.GONE}"
+                app:labelPadding="@dimen/p58"
+                app:labelText="赠品"
+                app:labelTextColor="@color/gray19"
+                app:labelTextSize="@dimen/t15"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/m10"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/AddActivityLabelViewStyle"
+                android:onClick="@{() -> view.showStartTimePicker()}"
+                android:text="@{viewModel.startTime ?? @string/select_start_time}"
+                android:textColor="@{viewModel.startTime.get() != null ? @color/mine_shaft : @color/iron}"
+                app:leftText="开始时间       "
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"
+                tools:text="2017.08.11"/>
+
+            <include layout="@layout/divider"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/AddActivityLabelViewStyle"
+                android:onClick="@{() -> view.showEndTimePicker()}"
+                android:text="@{viewModel.endTime ?? @string/select_end_time}"
+                android:textColor="@{viewModel.endTime.get() != null ? @color/mine_shaft : @color/iron}"
+                app:leftText="结束时间       "
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"
+                tools:text="2017.08.11"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s49"
+            android:layout_marginLeft="@dimen/m10"
+            android:layout_marginRight="@dimen/m10"
+            android:layout_marginTop="@dimen/m40"
+            android:onClick="@{() -> viewModel.saveOrUpdateActivity()}"
+            android:text="确认添加"/>
+    </LinearLayout>
+</layout>

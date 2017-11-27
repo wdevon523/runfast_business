@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/blue_charcoal</color>
+    <color name="colorPrimaryDark">@color/blue_charcoal</color>
+    <color name="colorAccent">@color/crusta</color>
+
+    <color name="paynes_gray">#40424C</color>
+    <color name="blue_charcoal">#272A32</color>
+    <color name="crusta">#fb7d30</color>
+    <color name="crusta_dark">#be5312</color>
+    <color name="dull_cyan">#41C7BD</color>
+    <color name="mountain_mist">#969699</color>
+    <color name="white">#fff</color>
+    <color name="aluminum">#999999</color>
+    <color name="anti_flash_white">#F3F4F5</color>
+    <color name="tan_hide">#fc9153</color>
+    <color name="tan_hide_light">#eabea5</color>
+    <color name="mine_shaft">#333333</color>
+    <color name="iron">#CCCCCC</color>
+    <color name="alabaster">#FBFBFB</color>
+    <color name="apple">#55b936</color>
+    <color name="romance">#FFFEFE</color>
+    <color name="black_haze">#F7F7F7</color>
+    <color name="pumice">#C5C5C5</color>
+    <color name="sunset_orange">#FB4E44</color>
+
+    <color name="gray1">#f1f2f1</color>
+    <color name="gray2">#F2F2F2</color>
+    <color name="gray3">#ededed</color>
+    <color name="gray4">#ebeceb</color>
+    <color name="gray5">#EAEAEA</color>
+    <color name="gray6">#e5e5e5</color>
+    <color name="gray7">#d5d5d5</color>
+    <color name="gray8">#D2D2D2</color>
+    <color name="gray9">#cecece</color>
+    <color name="gray10">#c2c2c2</color>
+    <color name="gray11">#C9C9C9</color>
+    <color name="gray12">#c8c8c8</color>
+    <color name="gray13">#BEBEBE</color>
+    <color name="gray14">#BDBDBD</color>
+    <color name="gray15">#A4A4A4</color>
+    <color name="gray16">#808080</color>
+    <color name="gray17">#7A7A7A</color>
+    <color name="gray18">#767676</color>
+    <color name="gray19">#666666</color>
+    <color name="gray20">#606060</color>
+    <color name="gray21">#464646</color>
+    <color name="gray22">#de000000</color>
+    <color name="text_333333">#333333</color>
+    <color name="text_999999">#999999</color>
+</resources>

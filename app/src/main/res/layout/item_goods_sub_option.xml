@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="option"
+            type="com.gxuc.runfast.business.data.bean.Option"/>
+
+        <variable
+            name="subOption"
+            type="com.gxuc.runfast.business.data.bean.SubOption"/>
+
+        <variable
+            name="adapter"
+            type="com.gxuc.runfast.business.epoxy.Adapter"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.goods.detail.GoodsDetailViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray6"
+            tools:layout_marginLeft="@dimen/m15"
+            tools:layout_marginRight="@dimen/m15"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s45"
+            android:background="@color/black_haze"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/p10"
+            android:paddingRight="@dimen/p10"
+            tools:layout_marginLeft="@dimen/m15"
+            tools:layout_marginRight="@dimen/m15">
+
+            <com.gxuc.runfast.business.widget.LabelEditText
+                style="@style/AddGoodsEditTextStyle"
+                android:layout_width="@dimen/s185"
+                android:hint="子项名称"
+                android:text="@={subOption.name}"
+                app:labelPadding="@dimen/p11"
+                app:labelText="子选项"
+                app:labelTextColor="@color/gray19"
+                app:labelTextSize="@dimen/t14"/>
+
+            <com.gxuc.runfast.business.widget.LabelEditText
+                style="@style/AddGoodsEditTextStyle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:hint="序号"
+                android:inputType="number"
+                android:text="@={subOption.order}"
+                app:labelPadding="@dimen/p24"
+                app:labelText="排序"
+                app:labelTextColor="@color/gray19"
+                app:labelTextSize="@dimen/t14"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.deleteSubOption(adapter, option, subOption)}"
+                android:src="@drawable/goods_delete_icon"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

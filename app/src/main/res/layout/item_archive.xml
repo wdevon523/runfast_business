@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="size"
+            type="float"/>
+
+        <variable
+            name="imageUrl"
+            type="String"/>
+
+        <variable
+            name="id"
+            type="long"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.mine.archive.ArchiveViewModel"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        app:size="@{size}">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:imageUrl="@{imageUrl}"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|top"
+            android:layout_marginRight="@dimen/m4"
+            android:layout_marginTop="@dimen/m4"
+            android:onClick="@{() -> viewModel.showDeleteArchiveDialog(id)}"
+            android:paddingBottom="@dimen/p10"
+            android:paddingLeft="@dimen/p10"
+            android:src="@drawable/goods_delete_icon"/>
+    </FrameLayout>
+</layout>

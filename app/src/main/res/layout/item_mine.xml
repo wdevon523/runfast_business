@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.mine.MineFragment"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.mine.MineViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/m10"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.gxuc.runfast.business.widget.JustifyTextView
+            style="@style/MineItemStyle"
+            app:leftText="提现账号"
+            app:rightText="@{viewModel.account}"/>
+
+        <include layout="@layout/divider"/>
+
+        <com.gxuc.runfast.business.widget.JustifyTextView
+            style="@style/MineItemStyle"
+            app:leftText="提现账号开户人"
+            app:rightText="@{viewModel.accountName}"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/anti_flash_white"/>
+
+        <com.gxuc.runfast.business.widget.JustifyTextView
+            style="@style/MineItemStyle"
+            android:onClick="@{()->view.toChangePassword()}"
+            app:leftText="修改密码"
+            app:rightIcon="@drawable/ic_right_arrow"/>
+
+        <!--<include layout="@layout/divider"/>-->
+
+        <!--<com.gxuc.runfast.shop.app.widget.JustifyTextView-->
+        <!--style="@style/MineItemStyle"-->
+        <!--android:onClick="@{()->view.toBindPhone()}"-->
+        <!--app:leftText="换绑手机"-->
+        <!--app:rightIcon="@drawable/ic_right_arrow"/>-->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/anti_flash_white"/>
+
+        <com.gxuc.runfast.business.widget.JustifyTextView
+            style="@style/MineItemStyle"
+            android:onClick="@{()->view.toViewShopInfo()}"
+            app:leftText="店铺信息"
+            app:rightIcon="@drawable/ic_right_arrow"
+            app:rightIconPadding="@dimen/p10"
+            app:rightText="修改"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/anti_flash_white"/>
+
+        <TextView
+            style="@style/MineItemStyle"
+            android:onClick="@{()->view.toFeedback()}"
+            android:text="意见反馈"/>
+
+        <include layout="@layout/divider"/>
+
+        <TextView
+            style="@style/MineItemStyle"
+            android:onClick="@{()->view.toAboutUs()}"
+            android:text="关于我们"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/anti_flash_white"/>
+
+        <TextView
+            style="@style/MineItemStyle"
+            android:onClick="@{()->view.toConnectPrinter()}"
+            android:text="设置打印机"/>
+
+        <include layout="@layout/divider"/>
+
+        <TextView
+            style="@style/MineItemStyle"
+            android:onClick="@{()->view.toArchive()}"
+            android:text="食品安全档案"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/anti_flash_white"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s50"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.logout()}"
+            android:text="退出账号"
+            android:textColor="@color/tan_hide"/>
+    </LinearLayout>
+</layout>

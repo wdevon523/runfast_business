@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.operation.goods.sort.GoodsSortActivity"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.goods.sort.GoodsSortViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:srlEnableNestedScrolling="true"
+            app:srlEnablePreviewInEditMode="true">
+
+            <com.gxuc.runfast.business.widget.DeliveryHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.vlonjatg.progressactivity.ProgressFrameLayout
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                app:emptyImageHeight="166dp"
+                app:emptyImageWidth="203dp"
+                app:emptyTitleMarginTop="@dimen/m24"
+                app:emptyTitleTextColor="@color/gray19"
+                app:emptyTitleTextSize="14px"
+                tools:ignore="PxUsage">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/m10"
+                    android:background="@color/white"
+                    app:adapter="@{viewModel.mAdapter}"/>
+            </com.vlonjatg.progressactivity.ProgressFrameLayout>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s49"
+            android:background="@color/white"
+            android:onClick="@{() -> view.toAddGoodsSort()}"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_add_good_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/op_new_goods_sort"
+                android:drawablePadding="@dimen/p6"
+                android:gravity="center"
+                android:text="@string/add_goods_sort"
+                android:textColor="@color/mine_shaft"
+                android:textSize="@dimen/t13"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

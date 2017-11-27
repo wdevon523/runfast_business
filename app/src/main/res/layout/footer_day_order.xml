@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.statistics.order.DayOrderViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s49"
+        android:background="@drawable/shape_bg_footer_day_order"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        tools:layout_marginLeft="@dimen/m10"
+        tools:layout_marginRight="@dimen/m10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="总计"
+            android:textColor="@color/tan_hide"
+            android:textSize="@dimen/t12"/>
+
+        <com.gxuc.runfast.business.widget.LabelView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@{viewModel.amount}"
+            android:textColor="@color/gray19"
+            android:textSize="@dimen/t12"
+            app:leftText="￥"
+            app:leftTextAppearance="@style/LabelView_12dp_gray19"
+            tools:text="0.00"/>
+
+        <com.gxuc.runfast.business.widget.LabelView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:text="@{viewModel.subsidy}"
+            android:textColor="@color/gray19"
+            android:textSize="@dimen/t12"
+            app:leftText="￥"
+            app:leftTextAppearance="@style/LabelView_12dp_gray19"
+            tools:text="0.00"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="--"
+            android:textColor="@color/gray19"
+            android:textSize="@dimen/t12"/>
+    </LinearLayout>
+</layout>

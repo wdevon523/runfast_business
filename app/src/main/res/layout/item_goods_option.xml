@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="option"
+            type="com.gxuc.runfast.business.data.bean.Option"/>
+
+        <variable
+            name="manager"
+            type="android.support.v7.widget.LinearLayoutManager"/>
+
+        <variable
+            name="adapter"
+            type="com.gxuc.runfast.business.epoxy.Adapter"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.goods.detail.GoodsDetailViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s45"
+            android:background="@color/black_haze"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/p10"
+            android:paddingRight="@dimen/p10"
+            tools:layout_marginLeft="@dimen/m15"
+            tools:layout_marginRight="@dimen/m15"
+            tools:layout_marginTop="@dimen/m6">
+
+            <com.gxuc.runfast.business.widget.LabelEditText
+                style="@style/AddGoodsEditTextStyle"
+                android:layout_width="@dimen/s185"
+                android:hint="输入名称"
+                android:text="@={option.name}"
+                app:labelPadding="@dimen/p24"
+                app:labelText="名称"
+                app:labelTextColor="@color/gray19"
+                app:labelTextSize="@dimen/t14"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/goods_manage_add"
+                android:drawablePadding="@dimen/p6"
+                android:gravity="center_vertical"
+                android:onClick="@{() -> viewModel.addSubOption(adapter, option)}"
+                android:text="添加子选项"
+                android:textColor="@color/gray19"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.deleteOption(option)}"
+                android:src="@drawable/goods_delete_icon"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_sub_option"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:adapter="@{adapter}"
+            app:itemAnimator="@{null}"
+            app:layoutManager="@{manager}"/>
+    </LinearLayout>
+</layout>

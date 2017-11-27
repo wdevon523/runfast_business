@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="name"
+            type="String"/>
+
+        <variable
+            name="count"
+            type="String"/>
+
+        <variable
+            name="price"
+            type="String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/p10"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:text="@{name}"
+            android:textColor="@color/gray19"
+            android:textSize="@dimen/t11"
+            tools:text="美式香芋派"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`x` + count}"
+            android:textColor="@color/gray19"
+            android:textSize="@dimen/t11"
+            tools:text="x1"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/yuan + price}"
+            android:textColor="@color/gray19"
+            android:textSize="@dimen/t11"
+            tools:text="￥2"/>
+    </LinearLayout>
+</layout>

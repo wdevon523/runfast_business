@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="standard"
+            type="com.gxuc.runfast.business.data.bean.Standard"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.goods.detail.GoodsDetailViewModel"/>
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s45"
+        android:background="@color/black_haze"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/p10"
+        android:paddingRight="@dimen/p10"
+        tools:layout_marginLeft="@dimen/m15"
+        tools:layout_marginRight="@dimen/m15"
+        tools:layout_marginTop="@dimen/m6">
+
+        <com.gxuc.runfast.business.widget.LabelEditText
+            style="@style/AddGoodsEditTextStyle"
+            android:layout_width="@dimen/s185"
+            android:hint="输入名称"
+            android:text="@={standard.name}"
+            app:labelPadding="@dimen/p24"
+            app:labelText="名称"
+            app:labelTextColor="@color/gray19"
+            app:labelTextSize="@dimen/t14"/>
+
+        <com.gxuc.runfast.business.widget.LabelEditText
+            style="@style/AddGoodsEditTextStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:hint="金额"
+            android:inputType="numberDecimal"
+            android:text="@={standard.price}"
+            app:labelPadding="@dimen/p24"
+            app:labelText="价格"
+            app:labelTextColor="@color/gray19"
+            app:labelTextSize="@dimen/t14"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.deleteStandard(standard)}"
+            android:src="@drawable/goods_delete_icon"
+            android:visibility="@{viewModel.standardHasOne ? View.INVISIBLE : View.VISIBLE}"/>
+    </LinearLayout>
+</layout>

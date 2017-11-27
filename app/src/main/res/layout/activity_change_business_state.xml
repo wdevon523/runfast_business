@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <RadioGroup
+            android:id="@+id/group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:checkedButton="@+id/rb_state_business"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rb_state_business"
+                style="@style/BusinessStateRadioButtonStyle"
+                android:tag="0"
+                android:text="营业"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/m15"
+                android:background="@color/gray6"/>
+
+            <RadioButton
+                android:id="@+id/rb_state_rest"
+                style="@style/BusinessStateRadioButtonStyle"
+                android:tag="1"
+                android:text="打烊"/>
+        </RadioGroup>
+    </LinearLayout>
+</layout>

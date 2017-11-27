@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.bluetooth.BluetoothDevice"/>
+
+        <variable
+            name="device"
+            type="android.bluetooth.BluetoothDevice"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.mine.printer.PrinterViewModel"/>
+    </data>
+
+    <com.gxuc.runfast.business.widget.JustifyTextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s50"
+        android:background="@color/white"
+        android:onClick="@{() -> viewModel.changePrinterState(device)}"
+        android:paddingLeft="@dimen/p15"
+        android:paddingRight="@dimen/p15"
+        app:leftText="@{device.name}"
+        app:leftTextColor="@color/gray19"
+        app:rightIcon="@drawable/ic_right_arrow"
+        app:rightIconPadding="@dimen/p10"
+        app:rightText="@{device.bondState == BluetoothDevice.BOND_BONDED ? @string/bond_bonded : @string/bond_unbonded}"
+        app:rightTextColorValue="@{device.bondState == BluetoothDevice.BOND_BONDED ? @color/tan_hide : @color/aluminum}"
+        app:rightTextSize="@dimen/t12"/>
+</layout>

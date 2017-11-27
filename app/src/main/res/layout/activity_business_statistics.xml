@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.operation.statistics.BusinessStatisticsActivity"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.statistics.BusinessStatisticsViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <com.vlonjatg.progressactivity.ProgressLinearLayout
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/s80"
+                android:layout_marginBottom="@dimen/m15"
+                android:layout_marginLeft="@dimen/m10"
+                android:layout_marginRight="@dimen/m10"
+                android:layout_marginTop="@dimen/m15"
+                android:background="@drawable/shape_bg_message_item"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.gxuc.runfast.business.widget.LabelView
+                    style="@style/BusinessStatisticsLabelViewStyle"
+                    android:text="@{viewModel.todaySale}"
+                    app:leftText="￥"
+                    app:leftTextAppearance="@style/LabelView_13dp_mine_shaft"
+                    app:topText="今日销售额"
+                    app:topTextAppearance="@style/LabelView_11dp_mountain_mist"
+                    tools:text="0"/>
+
+                <com.gxuc.runfast.business.widget.LabelView
+                    style="@style/BusinessStatisticsLabelViewStyle"
+                    android:text="@{viewModel.todayIncome}"
+                    app:leftText="￥"
+                    app:leftTextAppearance="@style/LabelView_13dp_mine_shaft"
+                    app:topText="今日收入"
+                    app:topTextAppearance="@style/LabelView_11dp_mountain_mist"
+                    tools:text="0"/>
+
+                <com.gxuc.runfast.business.widget.LabelView
+                    style="@style/BusinessStatisticsLabelViewStyle"
+                    android:text="@{viewModel.monthIncome}"
+                    app:leftText="￥"
+                    app:leftTextAppearance="@style/LabelView_13dp_mine_shaft"
+                    app:topText="当月收入"
+                    app:topTextAppearance="@style/LabelView_11dp_mountain_mist"
+                    tools:text="0"/>
+
+                <com.gxuc.runfast.business.widget.LabelView
+                    style="@style/BusinessStatisticsLabelViewStyle"
+                    android:text="@{viewModel.totalIncome}"
+                    app:leftText="￥"
+                    app:leftTextAppearance="@style/LabelView_13dp_mine_shaft"
+                    app:topText="总收入"
+                    app:topTextAppearance="@style/LabelView_11dp_mountain_mist"
+                    tools:text="0"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/alabaster"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/MineItemStyle"
+                    android:drawableLeft="@drawable/business_statistics_goods_sell"
+                    android:onClick="@{()->view.toGoodsSell()}"
+                    android:text="商品销售统计"/>
+
+                <include layout="@layout/divider"/>
+
+                <TextView
+                    style="@style/MineItemStyle"
+                    android:drawableLeft="@drawable/business_statistics_monthly"
+                    android:onClick="@{()->view.toMonthly()}"
+                    android:text="销售月报表"/>
+
+                <include layout="@layout/divider"/>
+
+                <TextView
+                    style="@style/MineItemStyle"
+                    android:drawableLeft="@drawable/business_statistics_day_order"
+                    android:onClick="@{()->view.toDayOrder()}"
+                    android:text="当日订单清单"/>
+            </LinearLayout>
+        </com.vlonjatg.progressactivity.ProgressLinearLayout>
+    </LinearLayout>
+</layout>

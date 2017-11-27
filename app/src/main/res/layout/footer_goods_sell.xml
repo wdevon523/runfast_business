@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.statistics.goods.GoodsSellViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/anti_flash_white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_bg_message_item"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/p15"
+            android:paddingTop="@dimen/p15"
+            tools:layout_marginLeft="@dimen/m10"
+            tools:layout_marginRight="@dimen/m10">
+
+            <com.gxuc.runfast.business.widget.LabelView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:lineSpacingExtra="@dimen/m10"
+                android:text="@{@string/yuan + viewModel.amount}"
+                android:textColor="@color/mine_shaft"
+                android:textSize="@dimen/t13"
+                app:topText="销售总额"
+                app:topTextAppearance="@style/LabelView_11dp_aluminum"
+                tools:text="￥0.00"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:lineSpacingExtra="@dimen/m10"
+                android:text="@{viewModel.count}"
+                android:textColor="@color/mine_shaft"
+                android:textSize="@dimen/t13"
+                app:topText="销售数量"
+                app:topTextAppearance="@style/LabelView_11dp_aluminum"
+                tools:text="0.00"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:lineSpacingExtra="@dimen/m10"
+                android:text="@{@string/yuan + viewModel.price}"
+                android:textColor="@color/mine_shaft"
+                android:textSize="@dimen/t13"
+                app:topText="平均客单价"
+                app:topTextAppearance="@style/LabelView_11dp_aluminum"
+                tools:text="￥0.00"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

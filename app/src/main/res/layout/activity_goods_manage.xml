@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.operation.goods.GoodsManageActivity"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.goods.GoodsViewModel"/>
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_charcoal"
+            app:tabIndicatorColor="@color/crusta"
+            app:tabIndicatorHeight="@dimen/s2"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextAppearance="@style/TabTextAppearance"
+            app:tabTextColor="@color/mountain_mist"/>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:srlEnableLoadmore="false"
+            app:srlEnableNestedScrolling="true"
+            app:srlEnablePreviewInEditMode="true">
+
+            <com.gxuc.runfast.business.widget.DeliveryHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.vlonjatg.progressactivity.ProgressLinearLayout
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/sorts"
+                    android:layout_width="@dimen/s80"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never"
+                    app:adapter="@{viewModel.sortAdapter}"
+                    app:layoutManager="@{view.sortManager}"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/items"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    app:adapter="@{viewModel.goodsAdapter}"
+                    app:layoutManager="@{view.goodsManager}"/>
+            </com.vlonjatg.progressactivity.ProgressLinearLayout>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray6"/>
+
+        <include
+            layout="@layout/layout_goods_option"
+            app:view="@{view}"/>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.operation.goods.GoodsManageActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s49"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        tools:showIn="@layout/activity_goods_manage">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/GoodsManageBottomTextViewStyle"
+                android:drawableLeft="@drawable/goods_manage_class"
+                android:onClick="@{()->view.toGoodsSort()}"
+                android:text="管理分类"/>
+        </FrameLayout>
+
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/gray6"/>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/GoodsManageBottomTextViewStyle"
+                android:drawableLeft="@drawable/goods_manage_activity"
+                android:onClick="@{()->view.toActivityList()}"
+                android:text="活动列表"/>
+        </FrameLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/gray6"/>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/GoodsManageBottomTextViewStyle"
+                android:drawableLeft="@drawable/goods_manage_add"
+                android:onClick="@{()->view.toAddGoods()}"
+                android:text="新增商品"/>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.mine.MineFragment"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.mine.MineViewModel"/>
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/header_mine"
+                app:view="@{view}"
+                app:viewModel="@{viewModel}"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_charcoal"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/p4">
+
+                <TextView
+                    style="@style/MineTopLabelText"
+                    android:background="@color/blue_charcoal"
+                    android:text="营业时间"/>
+
+                <TextView
+                    style="@style/MineTopLabelText"
+                    android:background="@color/blue_charcoal"
+                    android:text="起送金额"/>
+
+                <TextView
+                    style="@style/MineTopLabelText"
+                    android:background="@color/blue_charcoal"
+                    android:text="范围"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_charcoal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/p12">
+
+                <TextView
+                    style="@style/MineTopText"
+                    android:text="@{viewModel.workTime}"
+                    tools:text="08:00-04:00\n14:00~21:00"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="13dp"
+                    android:background="@color/aluminum"/>
+
+                <com.gxuc.runfast.business.widget.LabelView
+                    style="@style/MineTopText"
+                    android:text="@{viewModel.upPrice}"
+                    app:rightText=" 元"
+                    app:rightTextAppearance="@style/LabelView_13dp_white"
+                    tools:text="0"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="13dp"
+                    android:background="@color/aluminum"/>
+
+                <com.gxuc.runfast.business.widget.LabelView
+                    style="@style/MineTopText"
+                    android:text="@{viewModel.range}"
+                    tools:text="0km"/>
+            </LinearLayout>
+
+            <include
+                layout="@layout/item_mine"
+                app:view="@{view}"
+                app:viewModel="@{viewModel}"/>
+        </LinearLayout>
+    </ScrollView>
+</layout>

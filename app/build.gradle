@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "com.gxuc.runfast.business"
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 40
+        versionName "2.0.1"
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: "com.gxuc.runfast.business",
+                JPUSH_APPKEY : "c94ba5202ef88b506181459f",
+                JPUSH_CHANNEL: "developer-default"
+        ]
+    }
+    signingConfigs {
+        release {
+            storeFile file('runfast.jks')
+            storePassword RELEASE_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWROD
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError false
+        disable "ResourceType"
+    }
+    aaptOptions {
+        cruncherEnabled false
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+    }
+    dexOptions {
+        jumboMode true
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:design:26.+'
+
+    compile 'org.greenrobot:eventbus:latest.release'
+    compile 'com.orhanobut:logger:latest.release'
+    compile 'com.7heaven.ioswidget:iosswitch:latest.release'
+    compile 'io.paperdb:paperdb:latest.release'
+    compile 'com.github.Berial:progress-activity:latest.release'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    compile 'cn.aigestudio.wheelpicker:WheelPicker:latest.release'
+    compile 'com.zhihu.android:matisse:latest.release'
+    compile 'com.steelkiwi:cropiwa:latest.release'
+
+    compile 'com.tencent.bugly:crashreport:latest.release'
+
+    compile 'com.airbnb.android:epoxy:2.4.0'
+    compile 'com.airbnb.android:epoxy-databinding:2.4.0'
+    annotationProcessor 'com.airbnb.android:epoxy-processor:2.4.0'
+
+    compile 'com.squareup.retrofit2:retrofit:latest.release'
+    compile 'com.squareup.retrofit2:converter-gson:latest.release'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:latest.release'
+    compile 'com.squareup.okhttp3:okhttp:latest.release'
+    compile 'com.squareup.okhttp3:logging-interceptor:latest.release'
+
+    compile 'io.reactivex.rxjava2:rxjava:latest.release'
+    compile 'io.reactivex.rxjava2:rxandroid:latest.release'
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:latest.release'
+
+    compile('com.github.bumptech.glide:glide:4.1.1') {
+        exclude group: 'com.android.support'
+    }
+    compile('com.github.bumptech.glide:okhttp3-integration:4.1.1') {
+        exclude group: 'com.android.support'
+        exclude group: 'com.squareup.okhttp3'
+    }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
+
+    compile 'cn.jiguang.sdk:jpush:latest.release'
+    compile 'cn.jiguang.sdk:jcore:latest.release'
+}

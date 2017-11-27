@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.operation.goods.activity.detail.ActivityDetailActivity"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.goods.activity.detail.ActivityDetailViewModel"/>
+
+        <import type="android.view.View"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/ActivityDetailLabelViewStyle"
+                android:text="@{viewModel.name}"
+                app:leftText="活动名称       "
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"
+                tools:text="ddddd"/>
+
+            <include layout="@layout/divider"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/ActivityDetailLabelViewStyle"
+                android:text="@{viewModel.typeName}"
+                android:textColor="@color/mine_shaft"
+                app:leftText="活动类型       "
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"
+                tools:text="满减活动"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/m10"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/ActivityDetailLabelViewStyle"
+                android:text="@{viewModel.full}"
+                android:visibility="@{viewModel.type == 1 || viewModel.type == 5 ? View.VISIBLE : View.GONE}"
+                app:leftText="满                  "
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"
+                tools:text="ddddd"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/AddActivityLabelViewStyle"
+                android:onClick="@{() -> viewModel.viewGoods()}"
+                android:text="@{@string/view + viewModel.menuName + @string/menu}"
+                android:textColor="@color/iron"
+                android:visibility="@{viewModel.type >= 2 &amp;&amp; viewModel.type &lt;= 4 ? View.VISIBLE : View.GONE}"
+                app:leftText="@{viewModel.menuName + @string/menu+ `       `}"
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/m15"
+                android:background="@color/gray6"
+                android:visibility="@{viewModel.type != 5 ? View. VISIBLE : View.GONE}"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/ActivityDetailLabelViewStyle"
+                android:text="@{viewModel.less}"
+                android:visibility="@{viewModel.type == 1 ? View. VISIBLE : View.GONE}"
+                app:leftText="减                  "
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"
+                tools:text="ddddd"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/ActivityDetailLabelViewStyle"
+                android:text="@{viewModel.discount}"
+                android:visibility="@{viewModel.type == 2 ? View. VISIBLE : View.GONE}"
+                app:leftText="打多少折       "
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"
+                tools:text="ddddd"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/ActivityDetailLabelViewStyle"
+                android:text="@{viewModel.disprice}"
+                android:visibility="@{viewModel.type == 4 ? View. VISIBLE : View.GONE}"
+                app:leftText="特价价格       "
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"
+                tools:text="ddddd"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/ActivityDetailLabelViewStyle"
+                android:text="@{viewModel.freebie}"
+                android:visibility="@{viewModel.type == 3 ? View. VISIBLE : View.GONE}"
+                app:leftText="赠送&#8194;&#8194;&#8194;&#8194;&#8194;&#160;    "
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"
+                tools:text="ddddd"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/m10"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/ActivityDetailLabelViewStyle"
+                android:text="@{viewModel.startTime}"
+                app:leftText="开始时间       "
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"
+                tools:text="ddddd"/>
+
+            <include layout="@layout/divider"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/ActivityDetailLabelViewStyle"
+                android:text="@{viewModel.endTime}"
+                app:leftText="结束时间       "
+                app:leftTextAppearance="@style/LabelView_15dp_gray19"
+                tools:text="ddddd"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s49"
+            android:layout_marginLeft="@dimen/m10"
+            android:layout_marginRight="@dimen/m10"
+            android:layout_marginTop="@dimen/m40"
+            android:enabled="@{viewModel.status != 0}"
+            android:onClick="@{() -> viewModel.changeStatus()}"
+            android:text="@{viewModel.statusName}"
+            tools:text="暂停活动"/>
+    </LinearLayout>
+</layout>

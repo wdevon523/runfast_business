@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/m60"
+        android:layout_marginTop="@dimen/m40"
+        android:text="广西跑腿快车有限公司"
+        android:textColor="@color/mine_shaft"
+        android:textSize="@dimen/t28"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/m15"
+        android:layout_marginRight="@dimen/m15"
+        android:lineSpacingExtra="@dimen/m4"
+        android:text="@string/about_us"
+        android:textSize="@dimen/t13"/>
+
+    <com.gxuc.runfast.business.widget.LabelView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/m15"
+        android:layout_marginRight="@dimen/m15"
+        android:layout_marginTop="@dimen/m40"
+        android:text="400-0775-248"
+        android:textColor="@color/tan_hide"
+        android:textSize="@dimen/t13"
+        app:leftText="联系电话："
+        app:leftTextAppearance="@style/LabelView_13dp_mine_shaft"/>
+
+    <com.gxuc.runfast.business.widget.LabelView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/m15"
+        android:layout_marginRight="@dimen/m15"
+        android:layout_marginTop="@dimen/m10"
+        android:text="广西南宁市竹溪大道南国大厦B座5楼"
+        android:textColor="@color/tan_hide"
+        android:textSize="@dimen/t13"
+        app:leftText="总公司地址："
+        app:leftTextAppearance="@style/LabelView_13dp_mine_shaft"/>
+
+    <com.gxuc.runfast.business.widget.LabelView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/m15"
+        android:layout_marginRight="@dimen/m15"
+        android:layout_marginTop="@dimen/m10"
+        android:text="广西桂平市西山镇桂江西路2号"
+        android:textColor="@color/tan_hide"
+        android:textSize="@dimen/t13"
+        app:leftText="分公司地址："
+        app:leftTextAppearance="@style/LabelView_13dp_mine_shaft"/>
+</LinearLayout>

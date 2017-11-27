@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.mine.phone.BindPhoneViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s40"
+            android:gravity="bottom"
+            android:paddingBottom="@dimen/p8"
+            android:paddingLeft="@dimen/p15"
+            android:paddingRight="@dimen/p15"
+            android:text="@{!viewModel.hasSent ? @string/send_verify_code : @string/sent + viewModel.hiddenPhone}"
+            android:textColor="@color/aluminum"
+            android:textSize="@dimen/t12"/>
+
+        <EditText
+            style="@style/ChangePasswordEditTextStyle"
+            android:background="@color/white"
+            android:hint="@{!viewModel.hasSent ? @string/input_phone : @string/input_verify_code}"
+            android:inputType="phone"
+            android:text="@={viewModel.content}"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s49"
+            android:layout_marginLeft="@dimen/m10"
+            android:layout_marginRight="@dimen/m10"
+            android:layout_marginTop="@dimen/m50"
+            android:onClick="@{() -> viewModel.toDo()}"
+            android:text="@{!viewModel.hasSent ? @string/next : @string/confirm}"/>
+    </LinearLayout>
+</layout>

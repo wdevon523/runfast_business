@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.order.OrderViewModel"/>
+
+        <variable
+            name="id"
+            type="long"/>
+
+        <variable
+            name="orderNumber"
+            type="String"/>
+
+        <variable
+            name="statusName"
+            type="String"/>
+
+        <variable
+            name="status"
+            type="int"/>
+
+        <variable
+            name="shopperName"
+            type="String"/>
+
+        <variable
+            name="shopperAddress"
+            type="String"/>
+
+        <variable
+            name="shopperPhone"
+            type="String"/>
+
+        <variable
+            name="remark"
+            type="String"/>
+
+        <variable
+            name="courier"
+            type="String"/>
+
+        <variable
+            name="courierPhone"
+            type="String"/>
+
+        <variable
+            name="deliveryTime"
+            type="String"/>
+
+        <variable
+            name="orderTime"
+            type="String"/>
+
+        <variable
+            name="orderNo"
+            type="String"/>
+
+        <variable
+            name="goodsCount"
+            type="String"/>
+
+        <variable
+            name="realIncome"
+            type="String"/>
+
+        <variable
+            name="cost"
+            type="String"/>
+
+        <variable
+            name="serviceCharge"
+            type="String"/>
+
+        <variable
+            name="subtotal"
+            type="String"/>
+
+        <variable
+            name="payAmount"
+            type="String"/>
+
+        <variable
+            name="packingCharge"
+            type="String"/>
+
+        <variable
+            name="hasPackingCharge"
+            type="boolean"/>
+
+        <variable
+            name="isDeliver"
+            type="boolean"/>
+
+        <variable
+            name="shopDeliveryCost"
+            type="String"/>
+
+        <variable
+            name="refund"
+            type="String"/>
+
+        <variable
+            name="hasRefund"
+            type="boolean"/>
+
+        <variable
+            name="expand"
+            type="boolean"/>
+
+        <variable
+            name="manager"
+            type="android.support.v7.widget.LinearLayoutManager"/>
+
+        <variable
+            name="goods"
+            type="com.gxuc.runfast.business.epoxy.Adapter"/>
+
+        <variable
+            name="showLeftButton"
+            type="boolean"/>
+
+        <variable
+            name="showRightButton"
+            type="boolean"/>
+
+        <variable
+            name="leftButtonText"
+            type="String"/>
+
+        <variable
+            name="rightButtonText"
+            type="String"/>
+
+        <variable
+            name="isWhiteButton"
+            type="boolean"/>
+
+        <variable
+            name="order"
+            type="com.gxuc.runfast.business.data.bean.Order"/>
+
+        <import type="android.view.View"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bg_message_item"
+        android:orientation="vertical"
+        tools:layout_margin="@dimen/m10">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_bg_header_order"
+            android:paddingBottom="@dimen/p10"
+            android:paddingLeft="@dimen/p15"
+            android:paddingRight="@dimen/p15"
+            android:paddingTop="@dimen/p10">
+
+            <TextView
+                android:layout_width="@dimen/s25"
+                android:layout_height="@dimen/s25"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/selector_bg_main_button"
+                android:gravity="center"
+                android:text="@{orderNumber}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/t14"
+                tools:text="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:text="@{statusName}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/t14"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/p15"
+            android:paddingRight="@dimen/p15">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/m12"
+                android:layout_marginTop="@dimen/m15"
+                android:text="@{shopperName}"
+                android:textColor="@color/mine_shaft"
+                android:textSize="@dimen/t14"
+                tools:text="李先生"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:onClick="@{() -> viewModel.call(shopperPhone)}"
+                android:src="@drawable/order_phone_icon"/>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/m15"
+            android:text="@{shopperAddress}"
+            android:textColor="@color/aluminum"
+            android:textSize="@dimen/t13"
+            tools:text="横县国际商贸城（A10栋七单元）"/>
+
+        <com.gxuc.runfast.business.widget.LabelView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/m15"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginTop="@dimen/m18"
+            android:text="@{remark}"
+            android:textColor="@color/gray19"
+            android:textSize="@dimen/t13"
+            app:leftText="备注: "
+            app:leftTextAppearance="@style/LabelView_13dp_tan_hide"
+            tools:text="不要香菜，不要辣"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/m15"
+            android:background="@color/gray6"
+            android:visibility="@{status > 2 ? View.VISIBLE : View.GONE}"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/p15"
+            android:paddingRight="@dimen/p15"
+            android:visibility="@{status > 2 ? View.VISIBLE : View.GONE}">
+
+            <com.gxuc.runfast.business.widget.LabelView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/m12"
+                android:layout_marginTop="@dimen/m15"
+                android:text="@{courier}"
+                android:textColor="@color/mine_shaft"
+                android:textSize="@dimen/t13"
+                app:leftText="配送员: "
+                app:leftTextAppearance="@style/LabelView_13dp_mine_shaft"
+                tools:text="李先生"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:onClick="@{() -> viewModel.call(courierPhone)}"
+                android:src="@drawable/order_phone_icon"/>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/m20"
+            android:layout_marginLeft="@dimen/m15"
+            android:text="@{@string/at + deliveryTime + @string/delivery}"
+            android:textColor="@color/iron"
+            android:textSize="@dimen/t11"
+            android:visibility="@{status == 8 ? View.VISIBLE : View.GONE}"
+            tools:text="于23:00送达"/>
+
+        <include layout="@layout/divider"/>
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m15"
+            android:button="@null"
+            android:checked="@={expand}"
+            android:drawableRight="@drawable/selector_order_arrow"
+            android:text="@{@string/order_goods_count(goodsCount)}"
+            android:textColor="@color/mine_shaft"
+            android:textSize="@dimen/t15"
+            tools:text="商品(0)"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginRight="@dimen/m15"
+            android:visibility="@{expand ? View.VISIBLE : View.GONE}"
+            app:adapter="@{goods}"
+            app:layoutManager="@{manager}"/>
+
+        <com.gxuc.runfast.business.widget.JustifyTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s11"
+            android:layout_marginBottom="@dimen/m10"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginRight="@dimen/m15"
+            android:visibility="@{expand &amp;&amp; hasPackingCharge ? View.VISIBLE : View.GONE}"
+            app:leftText="餐盒费"
+            app:leftTextColor="@color/gray19"
+            app:leftTextSize="@dimen/t11"
+            app:rightText="@{@string/yuan + packingCharge}"
+            app:rightTextColor="@color/gray19"
+            app:rightTextSize="@dimen/t11"/>
+
+        <com.gxuc.runfast.business.widget.JustifyTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s11"
+            android:layout_marginBottom="@dimen/m10"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginRight="@dimen/m15"
+            android:layout_marginTop="@dimen/m5"
+            android:visibility="@{expand ? View.VISIBLE : View.GONE}"
+            app:leftText="小计"
+            app:leftTextColor="@color/mine_shaft"
+            app:leftTextSize="@dimen/t11"
+            app:rightText="@{@string/yuan + subtotal}"
+            app:rightTextColor="@color/mine_shaft"
+            app:rightTextSize="@dimen/t11"/>
+
+        <com.gxuc.runfast.business.widget.JustifyTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s11"
+            android:layout_marginBottom="@dimen/m10"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginRight="@dimen/m15"
+            android:visibility="@{expand &amp;&amp; isDeliver ? View.VISIBLE : View.GONE}"
+            app:leftText="商家配送费"
+            app:leftTextColor="@color/aluminum"
+            app:leftTextSize="@dimen/t11"
+            app:rightText="@{@string/yuan + shopDeliveryCost}"
+            app:rightTextColor="@color/aluminum"
+            app:rightTextSize="@dimen/t11"/>
+
+        <com.gxuc.runfast.business.widget.JustifyTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s11"
+            android:layout_marginBottom="@dimen/m10"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginRight="@dimen/m15"
+            android:visibility="@{expand ? View.VISIBLE : View.GONE}"
+            app:leftText="商家活动支出"
+            app:leftTextColor="@color/aluminum"
+            app:leftTextSize="@dimen/t11"
+            app:rightText="@{`-` + @string/yuan + cost}"
+            app:rightTextColor="@color/aluminum"
+            app:rightTextSize="@dimen/t11"/>
+
+        <com.gxuc.runfast.business.widget.JustifyTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s11"
+            android:layout_marginBottom="@{hasRefund ? @dimen/m10 : @dimen/m15}"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginRight="@dimen/m15"
+            android:visibility="@{expand ? View.VISIBLE : View.GONE}"
+            app:leftText="平台服务费"
+            app:leftTextColor="@color/aluminum"
+            app:leftTextSize="@dimen/t11"
+            app:rightText="@{`-` + @string/yuan + serviceCharge}"
+            app:rightTextColor="@color/aluminum"
+            app:rightTextSize="@dimen/t11"/>
+
+        <com.gxuc.runfast.business.widget.JustifyTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s11"
+            android:layout_marginBottom="@dimen/m15"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginRight="@dimen/m15"
+            android:visibility="@{expand &amp;&amp; hasRefund ? View.VISIBLE : View.GONE}"
+            app:leftText="退款"
+            app:leftTextColor="@color/aluminum"
+            app:leftTextSize="@dimen/t11"
+            app:rightText="@{`-` + @string/yuan + refund}"
+            app:rightTextColor="@color/aluminum"
+            app:rightTextSize="@dimen/t11"/>
+
+        <include layout="@layout/divider"/>
+
+        <com.gxuc.runfast.business.widget.JustifyTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s11"
+            android:layout_marginBottom="@dimen/m10"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginRight="@dimen/m15"
+            android:layout_marginTop="@dimen/m12"
+            app:leftText="@{status == 2 ? @string/real_income : @string/predict_income}"
+            app:leftTextColor="@color/mine_shaft"
+            app:leftTextSize="@dimen/t11"
+            app:rightText="@{@string/yuan + realIncome}"
+            app:rightTextColor="@color/tan_hide"
+            app:rightTextSize="@dimen/t11"/>
+
+        <com.gxuc.runfast.business.widget.LabelView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/m15"
+            android:layout_marginLeft="@dimen/m15"
+            android:text="@{payAmount}"
+            android:textColor="@color/aluminum"
+            android:textSize="@dimen/t11"
+            app:leftText="在线支付: ￥"
+            app:leftTextAppearance="@style/LabelView_11dp_aluminum"
+            app:rightText="@{`    ` + (status == -1 ? @string/returned : @string/payed)}"
+            app:rightTextAppearance="@style/LabelView_11dp_apple"
+            tools:text="0"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_bg_bottom_order"
+            android:paddingLeft="@dimen/p15"
+            android:paddingRight="@dimen/p15">
+
+            <com.gxuc.runfast.business.widget.LabelView
+                android:id="@+id/tv_order_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m14"
+                android:text="@{orderTime}"
+                android:textColor="@color/aluminum"
+                android:textSize="@dimen/t10"
+                app:leftText="下单时间: "
+                app:leftTextAppearance="@style/LabelView_10dp_aluminum"
+                tools:text="08-02 14:33"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_order_time"
+                android:layout_marginBottom="@dimen/m15"
+                android:layout_marginTop="@dimen/m3"
+                android:text="@{orderNo}"
+                android:textColor="@color/aluminum"
+                android:textSize="@dimen/t10"
+                app:leftText="订单编号: "
+                app:leftTextAppearance="@style/LabelView_10dp_aluminum"
+                tools:text="123456576fvzxdfces"/>
+
+            <TextView
+                android:id="@+id/btn1"
+                style="@style/OrderItemButtonStyle"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="@dimen/m15"
+                android:background="@{isWhiteButton ? @drawable/shape_bg_round_gray6_button : @drawable/selector_bg_main_button}"
+                android:onClick="@{() -> viewModel.toDoRight(order)}"
+                android:text="@{rightButtonText}"
+                android:textColor="@{isWhiteButton ? @color/gray19 : @color/white}"
+                android:visibility="@{showRightButton ? View.VISIBLE : View.GONE}"/>
+
+            <TextView
+                android:id="@+id/btn2"
+                style="@style/OrderItemButtonStyle"
+                android:layout_toLeftOf="@id/btn1"
+                android:background="@drawable/shape_bg_round_gray6_button"
+                android:onClick="@{() -> viewModel.toDoLeft(order)}"
+                android:text="@{leftButtonText}"
+                android:textColor="@color/gray19"
+                android:visibility="@{showLeftButton ? View.VISIBLE : View.GONE}"/>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

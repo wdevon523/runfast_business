@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="adapter"
+            type="com.gxuc.runfast.business.epoxy.Adapter"/>
+    </data>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnableNestedScrolling="true"
+        app:srlEnablePreviewInEditMode="true">
+
+        <com.gxuc.runfast.business.widget.DeliveryHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.vlonjatg.progressactivity.ProgressFrameLayout
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:emptyImageHeight="166dp"
+            app:emptyImageWidth="203dp"
+            app:emptyTitleMarginTop="@dimen/m24"
+            app:emptyTitleTextColor="@color/gray19"
+            app:emptyTitleTextSize="14px"
+            tools:ignore="PxUsage">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:adapter="@{adapter}"/>
+
+        </com.vlonjatg.progressactivity.ProgressFrameLayout>
+
+        <com.scwang.smartrefresh.layout.footer.BallPulseFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlAccentColor="@color/crusta"/>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</layout>

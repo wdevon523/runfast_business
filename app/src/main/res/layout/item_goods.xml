@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="goods"
+            type="com.gxuc.runfast.business.data.bean.Goods"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.goods.GoodsViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> viewModel.viewGoodsDetail(goods.id)}"
+        android:orientation="vertical"
+        tools:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="@dimen/s76"
+            android:layout_height="@dimen/s76"
+            android:layout_marginBottom="@dimen/m15"
+            android:layout_marginLeft="@dimen/m28"
+            android:layout_marginRight="@dimen/m10"
+            android:layout_marginTop="@dimen/m12"
+            android:scaleType="fitXY"
+            app:roundImageUrl="@{goods.imageUrl}"
+            app:roundRadius="@{@dimen/s4}"
+            tools:background="@color/gray4"/>
+
+        <TextView
+            android:id="@+id/tv_goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/m16"
+            android:layout_toRightOf="@id/iv"
+            android:maxLines="2"
+            android:text="@{goods.name}"
+            android:textColor="@color/mine_shaft"
+            android:textSize="@dimen/t15"
+            tools:text="劲脆鸡腿堡"/>
+
+        <com.gxuc.runfast.business.widget.LabelView
+            android:id="@+id/tv_goods_sales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_goods_name"
+            android:layout_marginTop="@dimen/m4"
+            android:layout_toRightOf="@id/iv"
+            android:text="@{goods.sales}"
+            android:textColor="@color/aluminum"
+            android:textSize="@dimen/t10"
+            app:leftText="销量"
+            app:leftTextAppearance="@style/LabelView_10dp_aluminum"
+            tools:text="4"/>
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="@dimen/s63"
+            android:layout_height="@dimen/s35"
+            android:layout_alignBottom="@id/iv"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/m15"
+            android:background="@{goods.status == 2 ? @drawable/selector_bg_main_button : @drawable/shape_bg_round_gray6_button}"
+            android:onClick="@{() -> viewModel.manageGoodsStatus(goods)}"
+            android:text="@{goods.status == 2 ? @string/putaway : @string/sold_out}"
+            android:textColor="@{goods.status == 2 ? @color/white : @color/gray19}"
+            android:textSize="@dimen/t13"/>
+
+        <com.gxuc.runfast.business.widget.LabelView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_goods_sales"
+            android:layout_marginTop="@dimen/m12"
+            android:layout_toLeftOf="@id/btn"
+            android:layout_toRightOf="@id/iv"
+            android:text="@{goods.price}"
+            android:textColor="@color/sunset_orange"
+            android:textSize="@dimen/t18"
+            app:leftText="￥"
+            app:leftTextAppearance="@style/LabelView_18dp_sunset_orange"
+            app:rightText="/份"
+            app:rightTextAppearance="@style/LabelView_10dp_aluminum"
+            tools:text="17"/>
+    </RelativeLayout>
+</layout>

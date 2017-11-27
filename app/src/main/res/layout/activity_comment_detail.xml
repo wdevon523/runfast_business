@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.comment.detail.CommentDetailViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <com.vlonjatg.progressactivity.ProgressLinearLayout
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/p15">
+
+                <ImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="@dimen/s34"
+                    android:layout_height="@dimen/s34"
+                    android:layout_marginRight="@dimen/m12"
+                    app:circleImageUrl="@{viewModel.avatarUrl}"
+                    tools:background="@color/aluminum"/>
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/iv_avatar"
+                    android:text="@{viewModel.username}"
+                    android:textColor="@color/mine_shaft"
+                    android:textSize="@dimen/t14"
+                    tools:text="匿名用户"/>
+
+                <TextView
+                    android:id="@+id/tv_comment_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/tv_username"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_username"
+                    android:gravity="end"
+                    android:text="@{viewModel.time}"
+                    android:textColor="@color/gray19"
+                    android:textSize="@dimen/t11"
+                    tools:text="2017-07-22 23:41-58"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_star_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_username"
+                    android:layout_marginTop="@dimen/m6"
+                    android:layout_toRightOf="@id/iv_avatar"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/user_evaluate_star"
+                        android:tint="@{viewModel.star > -2 ? @color/crusta : @color/pumice}"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/user_evaluate_star"
+                        android:tint="@{viewModel.star > -1 ? @color/crusta : @color/pumice}"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/user_evaluate_star"
+                        android:tint="@{viewModel.star > 0 ? @color/crusta : @color/pumice}"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/user_evaluate_star"
+                        android:tint="@{viewModel.star > 1 ? @color/crusta : @color/pumice}"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/user_evaluate_star"
+                        android:tint="@{viewModel.star > 2 ? @color/crusta : @color/pumice}"
+                        tools:tint="@color/pumice"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_user_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ll_star_rating"
+                    android:layout_marginTop="@dimen/m15"
+                    android:layout_toRightOf="@id/iv_avatar"
+                    android:text="@{viewModel.content}"
+                    android:textColor="@color/mine_shaft"
+                    android:textSize="@dimen/t13"
+                    tools:text="配送快，准时送达"/>
+
+                <TextView
+                    android:id="@+id/tv_comment_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_user_comment"
+                    android:layout_marginTop="@dimen/m10"
+                    android:layout_toRightOf="@id/iv_avatar"
+                    android:drawableLeft="@drawable/user_evaluate_label_icon"
+                    android:drawablePadding="@dimen/p6"
+                    android:text="@{viewModel.label}"
+                    android:textColor="@color/aluminum"
+                    android:textSize="@dimen/t11"
+                    android:visibility="@{viewModel.hasLabel ? View.VISIBLE : View.GONE}"
+                    tools:text="服务不错，干净卫生"/>
+            </RelativeLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/s150"
+                android:layout_marginLeft="@dimen/m15"
+                android:layout_marginRight="@dimen/m15"
+                android:layout_marginTop="@dimen/m15"
+                android:background="@drawable/shape_border_rect_gray6"
+                android:enabled="@{!viewModel.hasReply}"
+                android:gravity="top|start"
+                android:hint="请输入对用户评价的改进方法（100个字以内）"
+                android:padding="@dimen/p10"
+                android:text="@={viewModel.reply}"/>
+
+            <Button
+                android:id="@+id/btn_reply"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/s49"
+                android:layout_marginLeft="@dimen/m15"
+                android:layout_marginRight="@dimen/m15"
+                android:layout_marginTop="@dimen/m20"
+                android:onClick="@{() -> viewModel.replyComment()}"
+                android:text="提交"
+                android:visibility="@{viewModel.hasReply ? View.GONE : View.VISIBLE}"/>
+        </com.vlonjatg.progressactivity.ProgressLinearLayout>
+    </LinearLayout>
+</layout>

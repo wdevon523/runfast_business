@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="sort"
+            type="com.gxuc.runfast.business.data.bean.GoodsSort"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.goods.GoodsViewModel"/>
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s54"
+        android:background="@{sort.selected ? @color/white : @color/anti_flash_white}"
+        android:gravity="center"
+        android:onClick="@{() -> viewModel.selectGoodsSort(sort)}"
+        android:text="@{sort.name}"
+        android:textColor="@color/selector_tv_textcolor_item_goods_sort"
+        android:textSize="@dimen/t13"
+        app:selected="@{sort.selected}"
+        tools:text="名称"/>
+</layout>

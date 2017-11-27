@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.operation.OperationFragment"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.OperationViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/blue_charcoal"
+            android:gravity="center"
+            android:text="门店运营"
+            android:textColor="@color/white"
+            android:textSize="@dimen/t18"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_charcoal"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/p12">
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/OperationTopText"
+                android:text="@{viewModel.todayOrderCount}"
+                app:rightText=" 单"
+                app:rightTextAppearance="@style/LabelView_13dp_white"
+                app:topText="今日有效订单"
+                app:topTextAppearance="@style/LabelView_11dp_mountain_mist"
+                tools:text="0"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="@dimen/m10"
+                android:background="@color/aluminum"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                style="@style/OperationTopText"
+                android:text="@{viewModel.todayIncome}"
+                app:rightText=" 元"
+                app:rightTextAppearance="@style/LabelView_13dp_white"
+                app:topText="今日订单收入"
+                app:topTextAppearance="@style/LabelView_11dp_mountain_mist"
+                tools:text="0"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/m10"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/OperationItemStyle"
+                android:drawableTop="@drawable/op_goods_manage"
+                android:onClick="@{() -> view.toGoodsManage()}"
+                android:text="商品管理"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray6"/>
+
+            <TextView
+                style="@style/OperationItemStyle"
+                android:drawableTop="@drawable/op_business_statistics"
+                android:onClick="@{() -> view.toBusinessStatistics()}"
+                android:text="营业统计"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray6"/>
+
+            <TextView
+                style="@style/OperationItemStyle"
+                android:drawableTop="@drawable/op_cash_application"
+                android:onClick="@{() -> view.toCashApplication()}"
+                android:text="提现申请"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray6"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/OperationItemStyle"
+                android:drawableTop="@drawable/op_user_evaluate"
+                android:onClick="@{()->view.toUserEvaluate()}"
+                android:text="用户评价"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray6"/>
+
+            <TextView
+                style="@style/OperationItemStyle"
+                android:drawableTop="@drawable/op_message_center"
+                android:onClick="@{() -> view.toMessageCenter()}"
+                android:text="消息中心"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray6"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="@dimen/s112"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

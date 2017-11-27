@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="orderCount"
+            type="int"/>
+
+        <variable
+            name="amount"
+            type="String"/>
+
+        <variable
+            name="status"
+            type="int"/>
+    </data>
+
+    <TextView
+        android:id="@+id/text"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s33"
+        android:gravity="center"
+        android:text="@{status == 1 ? @string/header_pending_order_text(orderCount, amount) : status == 2 ? @string/header_going_order_text(orderCount, amount) : status == 3 ? @string/header_completed_order_text(orderCount, amount) : @string/header_canceled_order_text(orderCount, amount)}"
+        android:textColor="@color/aluminum"
+        android:textSize="@dimen/t13"
+        tools:text="待处理2单，总额28.00元"/>
+</layout>

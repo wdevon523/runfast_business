@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.operation.statistics.monthly.MonthlyActivity"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.statistics.monthly.MonthlyViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <include
+            layout="@layout/layout_month_search"
+            app:view="@{view}"
+            app:viewModel="@{viewModel}"/>
+
+        <com.vlonjatg.progressactivity.ProgressLinearLayout
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:emptyImageHeight="166dp"
+            app:emptyImageWidth="203dp"
+            app:emptyTitleTextColor="@color/gray19"
+            app:emptyTitleTextSize="14px"
+            tools:ignore="PxUsage">
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/refresh"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:srlEnablePreviewInEditMode="true"
+                app:srlEnableRefresh="false">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/m10"
+                    android:layout_marginLeft="@dimen/m10"
+                    android:layout_marginRight="@dimen/m10"
+                    android:background="@color/white"
+                    app:adapter="@{viewModel.adapter}"/>
+
+                <com.scwang.smartrefresh.layout.footer.BallPulseFooter
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srlAccentColor="@color/crusta"/>
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.vlonjatg.progressactivity.ProgressLinearLayout>
+    </LinearLayout>
+</layout>

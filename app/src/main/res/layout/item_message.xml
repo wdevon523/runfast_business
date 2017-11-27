@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="date"
+            type="String"/>
+
+        <variable
+            name="title"
+            type="String"/>
+
+        <variable
+            name="content"
+            type="String"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s90"
+        tools:layout_margin="@dimen/m10"
+        android:background="@drawable/shape_bg_message_item">
+
+        <TextView
+            android:id="@+id/tv_message_time"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/s30"
+            android:layout_marginLeft="@dimen/m15"
+            android:drawableLeft="@drawable/message_time_icon"
+            android:drawablePadding="@dimen/p6"
+            android:gravity="center_vertical"
+            android:text="@{date}"
+            android:textColor="@color/aluminum"
+            android:textSize="@dimen/t12"
+            tools:text="2017.08.07 10:52:53"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/s30"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/m15"
+            android:layout_toRightOf="@id/tv_message_time"
+            android:gravity="center_vertical|right"
+            android:text="@{title}"
+            android:textColor="@color/tan_hide"
+            android:textSize="@dimen/t12"
+            tools:text="提现成功通知"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/tv_message_time"
+            android:layout_marginLeft="@dimen/m15"
+            android:background="@color/gray6"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginTop="@dimen/m10"
+            android:text="@{content}"
+            android:textColor="@color/gray19"
+            tools:text="提现申请已通过！"/>
+    </RelativeLayout>
+</layout>

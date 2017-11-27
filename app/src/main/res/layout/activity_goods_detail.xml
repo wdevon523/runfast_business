@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.operation.goods.detail.GoodsDetailActivity"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.goods.detail.GoodsDetailViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <com.vlonjatg.progressactivity.ProgressLinearLayout
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <com.gxuc.runfast.business.widget.LabelEditText
+                        style="@style/ShopInfoEditTextStyle"
+                        android:hint="输入商品名称"
+                        android:text="@={viewModel.name}"
+                        android:textColor="@color/mine_shaft"
+                        app:labelText="商品名称"
+                        app:labelTextColor="@color/gray19"/>
+
+                    <include layout="@layout/divider"/>
+
+                    <com.gxuc.runfast.business.widget.JustifyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s45"
+                        android:onClick="@{() -> view.toSelectGoodsSort()}"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15"
+                        app:leftText="商品分类"
+                        app:leftTextColor="@color/gray19"
+                        app:rightIcon="@drawable/ic_right_arrow"
+                        app:rightIconPadding="@dimen/p10"
+                        app:rightText="@{viewModel.sortName}"
+                        app:rightTextColor="@color/mine_shaft"/>
+
+                    <include layout="@layout/divider"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s100">
+
+                        <TextView
+                            android:id="@+id/tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/m15"
+                            android:layout_marginTop="@dimen/m34"
+                            android:text="上传图片"
+                            android:textColor="@color/gray19"
+                            android:textSize="@dimen/t14"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv"
+                            android:layout_marginLeft="@dimen/m15"
+                            android:layout_marginTop="@dimen/m8"
+                            android:text="图片需大于600x450像素"
+                            android:textColor="@color/iron"
+                            android:textSize="@dimen/t12"/>
+
+                        <ImageView
+                            android:id="@+id/iv_logo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/m15"
+                            android:onClick="@{() -> view.selectImage()}"
+                            android:src="@drawable/shop_info_add_logo"
+                            app:defaultImage="@{true}"
+                            app:imageUrl="@{viewModel.imageUrl}"/>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/m10"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s50"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="开启限购"
+                            android:textColor="@color/gray19"
+                            android:textSize="@dimen/t14"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <com.sevenheaven.iosswitch.ShSwitchView
+                            android:layout_width="@dimen/s60"
+                            android:layout_height="@dimen/s40"
+                            app:on="@={viewModel.isLimited}"
+                            app:tintColor="@color/crusta"/>
+                    </LinearLayout>
+
+                    <include layout="@layout/divider"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s50"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15"
+                        android:visibility="@{viewModel.isLimited ? View.VISIBLE : View.GONE}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="超出后按原价购买"
+                            android:textColor="@color/gray19"
+                            android:textSize="@dimen/t14"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <com.sevenheaven.iosswitch.ShSwitchView
+                            android:layout_width="@dimen/s60"
+                            android:layout_height="@dimen/s40"
+                            app:on="@{viewModel.needFullPrice}"
+                            app:tintColor="@color/crusta"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/m15"
+                        android:background="@color/gray6"
+                        android:visibility="@{viewModel.isLimited ? View.VISIBLE : View.GONE}"/>
+
+                    <com.gxuc.runfast.business.widget.LabelEditText
+                        style="@style/ShopInfoEditTextStyle"
+                        android:hint="数量"
+                        android:text="@={viewModel.limitCount}"
+                        android:textColor="@color/mine_shaft"
+                        android:visibility="@{viewModel.isLimited ? View.VISIBLE : View.GONE}"
+                        app:labelText="限购数量"
+                        app:labelTextColor="@color/gray19"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/m15"
+                        android:background="@color/gray6"
+                        android:visibility="@{viewModel.isLimited ? View.VISIBLE : View.GONE}"/>
+
+                    <com.gxuc.runfast.business.widget.JustifyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s45"
+                        android:onClick="@{() -> view.showStartTimePicker()}"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15"
+                        android:visibility="@{viewModel.isLimited ? View.VISIBLE : View.GONE}"
+                        app:leftText="开始时间"
+                        app:leftTextColor="@color/gray19"
+                        app:rightIcon="@drawable/ic_right_arrow"
+                        app:rightIconPadding="@dimen/p10"
+                        app:rightText="@{viewModel.startTime}"
+                        app:rightTextColor="@color/mine_shaft"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/m15"
+                        android:background="@color/gray6"
+                        android:visibility="@{viewModel.isLimited ? View.VISIBLE : View.GONE}"/>
+
+                    <com.gxuc.runfast.business.widget.JustifyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s45"
+                        android:onClick="@{() -> view.showEndTimePicker()}"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15"
+                        android:visibility="@{viewModel.isLimited ? View.VISIBLE : View.GONE}"
+                        app:leftText="结束时间"
+                        app:leftTextColor="@color/gray19"
+                        app:rightIcon="@drawable/ic_right_arrow"
+                        app:rightIconPadding="@dimen/p10"
+                        app:rightText="@{viewModel.endTime}"
+                        app:rightTextColor="@color/mine_shaft"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/m15"
+                        android:background="@color/gray6"
+                        android:visibility="@{viewModel.isLimited ? View.VISIBLE : View.GONE}"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s50"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="收取餐盒费"
+                            android:textColor="@color/gray19"
+                            android:textSize="@dimen/t14"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <com.sevenheaven.iosswitch.ShSwitchView
+                            android:layout_width="@dimen/s60"
+                            android:layout_height="@dimen/s40"
+                            app:on="@{viewModel.needPackingCharge}"
+                            app:tintColor="@color/crusta"/>
+                    </LinearLayout>
+
+                    <include layout="@layout/divider"/>
+
+                    <com.gxuc.runfast.business.widget.LabelEditText
+                        style="@style/ShopInfoEditTextStyle"
+                        android:hint="数量"
+                        android:text="@={viewModel.count}"
+                        android:textColor="@color/mine_shaft"
+                        app:labelText="商品数量"
+                        app:labelTextColor="@color/gray19"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/m10"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s45"
+                        android:layout_marginLeft="@dimen/m15"
+                        android:layout_marginRight="@dimen/m15"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="添加规格"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:drawableLeft="@drawable/goods_manage_add"
+                            android:drawablePadding="@dimen/p6"
+                            android:gravity="center_vertical"
+                            android:onClick="@{() -> viewModel.addStandard()}"
+                            android:text="添加"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/m15"
+                        android:background="@color/gray6"
+                        android:visibility="@{viewModel.standardIsEmpty ? View.GONE : View.VISIBLE}"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_standard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/m6"
+                        android:layout_marginLeft="@dimen/m15"
+                        android:layout_marginRight="@dimen/m15"
+                        android:layout_marginTop="@dimen/m6"
+                        android:visibility="@{viewModel.standardIsEmpty ? View.GONE : View.VISIBLE}"
+                        app:adapter="@{viewModel.standardAdapter}"
+                        app:itemAnimator="@{null}"
+                        app:layoutManager="@{view.standardManager}"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/m10"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s45"
+                        android:layout_marginLeft="@dimen/m15"
+                        android:layout_marginRight="@dimen/m15"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="商品选项"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:drawableLeft="@drawable/goods_manage_add"
+                            android:drawablePadding="@dimen/p6"
+                            android:gravity="center_vertical"
+                            android:onClick="@{() -> viewModel.addOption()}"
+                            android:text="添加"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/m15"
+                        android:background="@color/gray6"
+                        android:visibility="@{viewModel.optionIsEmpty ? View.GONE : View.VISIBLE}"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_option"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/m6"
+                        android:layout_marginLeft="@dimen/m15"
+                        android:layout_marginRight="@dimen/m15"
+                        android:layout_marginTop="@dimen/m6"
+                        android:visibility="@{viewModel.optionIsEmpty ? View.GONE : View.VISIBLE}"
+                        app:adapter="@{viewModel.optionAdapter}"
+                        app:itemAnimator="@{null}"
+                        app:layoutManager="@{view.optionManager}"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/s150"
+                    android:layout_marginTop="@dimen/m10"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/s45"
+                        android:layout_marginLeft="@dimen/m15"
+                        android:gravity="center_vertical"
+                        android:text="商品描述"/>
+
+                    <include layout="@layout/divider"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="top|start"
+                        android:hint="请输入菜单介绍或商品描述"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15"
+                        android:paddingTop="@dimen/p10"
+                        android:text="@={viewModel.describe}"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/s49"
+                    android:layout_marginTop="@dimen/m60"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.submit()}"
+                    android:text="@{viewModel.isAddGoods ? @string/confirm_add : @string/update}"
+                    android:textColor="@color/tan_hide"
+                    android:textSize="@dimen/t14"/>
+            </com.vlonjatg.progressactivity.ProgressLinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

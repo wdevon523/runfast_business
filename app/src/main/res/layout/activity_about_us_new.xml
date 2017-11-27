@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/m30"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/m15"
+        android:text="版本号：2.0.1"
+        android:textColor="@color/text_999999"
+        android:textSize="@dimen/m12" />
+
+    <TextView
+        style="@style/MineItemStyle"
+        android:layout_marginTop="@dimen/m40"
+        android:background="@color/white"
+        android:text="版本更新"/>
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/m45"-->
+    <!--android:layout_marginTop="@dimen/m40"-->
+    <!--android:background="@color/white">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginLeft="@dimen/m15"-->
+    <!--android:text="版本更新"-->
+    <!--android:textColor="@color/text_333333"-->
+    <!--android:textSize="@dimen/m16" />-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content" />-->
+
+    <!--</RelativeLayout>-->
+
+</LinearLayout>

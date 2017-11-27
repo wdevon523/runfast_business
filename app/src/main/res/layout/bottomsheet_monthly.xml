@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s45"
+        android:background="@color/alabaster"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/p15"
+        android:paddingRight="@dimen/p15">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="@dimen/s80"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="取消"
+            android:textColor="@color/mine_shaft"
+            android:textSize="@dimen/t13"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_complete"
+            android:layout_width="@dimen/s80"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|end"
+            android:text="完成"
+            android:textColor="@color/tan_hide"
+            android:textSize="@dimen/t13"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray6"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s20"
+        android:background="@color/romance"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.gxuc.runfast.business.widget.WheelYearPicker
+            android:id="@+id/wheel_year_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/romance"
+            app:wheel_curved="true"
+            app:wheel_indicator="true"
+            app:wheel_indicator_color="@color/anti_flash_white"
+            app:wheel_indicator_size="1dp"
+            app:wheel_item_space="@dimen/m50"
+            app:wheel_item_text_color="@color/aluminum"
+            app:wheel_item_text_size="@dimen/t16"
+            app:wheel_selected_item_text_color="@color/mine_shaft"
+            app:wheel_visible_item_count="3"/>
+
+        <com.gxuc.runfast.business.widget.WheelMonthPicker
+            android:id="@+id/wheel_month_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/romance"
+            app:wheel_curved="true"
+            app:wheel_indicator="true"
+            app:wheel_indicator_color="@color/anti_flash_white"
+            app:wheel_indicator_size="1dp"
+            app:wheel_item_space="@dimen/m50"
+            app:wheel_item_text_color="@color/aluminum"
+            app:wheel_item_text_size="@dimen/t16"
+            app:wheel_selected_item_text_color="@color/mine_shaft"
+            app:wheel_visible_item_count="3"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s20"
+        android:background="@color/romance"/>
+</LinearLayout>

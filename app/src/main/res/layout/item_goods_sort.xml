@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="sort"
+            type="com.gxuc.runfast.business.data.bean.GoodsSort"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.goods.sort.GoodsSortViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s50"
+        android:paddingLeft="@dimen/p15"
+        android:paddingRight="@dimen/p15">
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="@dimen/s74"
+            android:layout_height="@dimen/s26"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:onClick="@{() -> viewModel.toAddGoods(sort)}"
+            android:text="新增商品"
+            android:textSize="@dimen/t12"/>
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="@dimen/s50"
+            android:layout_height="@dimen/s26"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/m15"
+            android:layout_toLeftOf="@id/btn"
+            android:background="@drawable/shape_border_round_gray6"
+            android:onClick="@{() -> viewModel.edit(sort)}"
+            android:text="编辑"
+            android:textColor="@color/gray19"
+            android:textSize="@dimen/t12"/>
+
+        <com.gxuc.runfast.business.widget.LabelView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/m15"
+            android:layout_toLeftOf="@id/btn1"
+            android:lineSpacingExtra="@dimen/m6"
+            android:text="@{sort.name}"
+            android:textColor="@color/mine_shaft"
+            android:textSize="@dimen/t14"
+            app:bottomText="@{sort.goods.size() + @string/goods_unit}"
+            app:bottomTextAppearance="@style/LabelView_11dp_iron"
+            tools:text="数据线"/>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.mine.shop.ShopInfoActivity"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.mine.shop.ShopInfoViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <com.vlonjatg.progressactivity.ProgressLinearLayout
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/m10"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <com.gxuc.runfast.business.widget.JustifyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s45"
+                        android:onClick="@{() -> view.toChangeBusinessState()}"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15"
+                        app:leftText="营业状态"
+                        app:leftTextColor="@color/gray19"
+                        app:rightIcon="@drawable/ic_right_arrow"
+                        app:rightIconPadding="@dimen/p10"
+                        app:rightText="@{viewModel.statusName}"
+                        app:rightTextColorValue="@{viewModel.status == 0 ? @color/tan_hide : @color/gray19}"/>
+
+                    <include layout="@layout/divider"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s100"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="商家LOGO"
+                            android:textColor="@color/gray19"
+                            android:textSize="@dimen/t14"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <ImageView
+                            android:id="@+id/iv_logo"
+                            android:layout_width="@dimen/s80"
+                            android:layout_height="@dimen/s80"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/shop_info_add_logo"
+                            app:imageUrl="@{viewModel.logoUrl}"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/m10"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <com.gxuc.runfast.business.widget.JustifyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s45"
+                        android:onClick="@{() -> view.showStartTimePicker()}"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15"
+                        app:leftText="开业时段1"
+                        app:leftTextColor="@color/gray19"
+                        app:rightIcon="@drawable/ic_right_arrow"
+                        app:rightIconPadding="@dimen/p10"
+                        app:rightText="@{viewModel.startTime}"/>
+
+                    <include layout="@layout/divider"/>
+
+                    <com.gxuc.runfast.business.widget.JustifyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s45"
+                        android:onClick="@{() -> view.showEndTimePicker()}"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15"
+                        app:leftText="关门时段1"
+                        app:leftTextColor="@color/gray19"
+                        app:rightIcon="@drawable/ic_right_arrow"
+                        app:rightIconPadding="@dimen/p10"
+                        app:rightText="@{viewModel.endTime}"/>
+
+                    <include layout="@layout/divider"/>
+
+                    <com.gxuc.runfast.business.widget.JustifyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s45"
+                        android:onClick="@{() -> view.showNextStartTimePicker()}"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15"
+                        app:leftText="开业时段2"
+                        app:leftTextColor="@color/gray19"
+                        app:rightIcon="@drawable/ic_right_arrow"
+                        app:rightIconPadding="@dimen/p10"
+                        app:rightText="@{viewModel.nextStartTime}"/>
+
+                    <include layout="@layout/divider"/>
+
+                    <com.gxuc.runfast.business.widget.JustifyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s45"
+                        android:onClick="@{() -> view.showNextEndTimePicker()}"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15"
+                        app:leftText="关门时段2"
+                        app:leftTextColor="@color/gray19"
+                        app:rightIcon="@drawable/ic_right_arrow"
+                        app:rightIconPadding="@dimen/p10"
+                        app:rightText="@{viewModel.nextEndTime}"/>
+
+                    <include layout="@layout/divider"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s50"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="自动接单"
+                            android:textColor="@color/gray19"
+                            android:textSize="@dimen/t14"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <com.sevenheaven.iosswitch.ShSwitchView
+                            android:layout_width="@dimen/s60"
+                            android:layout_height="@dimen/s40"
+                            app:on="@={viewModel.isAutomatic}"
+                            app:tintColor="@color/crusta"/>
+                    </LinearLayout>
+
+                    <include layout="@layout/divider"/>
+
+                    <com.gxuc.runfast.business.widget.LabelEditText
+                        style="@style/ShopInfoEditTextStyle"
+                        android:hint="金额"
+                        android:text="@={viewModel.deliveryCost}"
+                        android:visibility="@{viewModel.isDeliver ? View.VISIBLE : View.GONE}"
+                        app:labelText="商家自配送费(元)"
+                        app:labelTextColor="@color/gray19"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/m15"
+                        android:background="@color/gray6"
+                        android:visibility="@{viewModel.isDeliver ? View.VISIBLE : View.GONE}"/>
+
+                    <com.gxuc.runfast.business.widget.LabelEditText
+                        style="@style/ShopInfoEditTextStyle"
+                        android:hint="金额"
+                        android:text="@={viewModel.packingCharge}"
+                        app:labelText="餐盒费(元)"
+                        app:labelTextColor="@color/gray19"/>
+
+                    <include layout="@layout/divider"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/s50"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="补贴配送费"
+                            android:textColor="@color/gray19"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <com.sevenheaven.iosswitch.ShSwitchView
+                            android:layout_width="@dimen/s60"
+                            android:layout_height="@dimen/s40"
+                            app:on="@={viewModel.hasSubsidy}"
+                            app:tintColor="@color/crusta"/>
+                    </LinearLayout>
+
+                    <include layout="@layout/divider"/>
+
+                    <com.gxuc.runfast.business.widget.LabelEditText
+                        style="@style/ShopInfoEditTextStyle"
+                        android:hint="金额"
+                        android:text="@={viewModel.subsidy}"
+                        app:labelText="补贴金额(元)"
+                        app:labelTextColor="@color/gray19"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/s150"
+                    android:layout_marginTop="@dimen/m10"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/s45"
+                        android:layout_marginLeft="@dimen/m15"
+                        android:gravity="center_vertical"
+                        android:text="商品简介"/>
+
+                    <include layout="@layout/divider"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="top|start"
+                        android:hint="输入商品简介"
+                        android:paddingLeft="@dimen/p15"
+                        android:paddingRight="@dimen/p15"
+                        android:paddingTop="@dimen/p10"
+                        android:text="@={viewModel.describe}"/>
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/s49"
+                    android:layout_marginBottom="@dimen/m10"
+                    android:layout_marginLeft="@dimen/m15"
+                    android:layout_marginRight="@dimen/m15"
+                    android:layout_marginTop="@dimen/m20"
+                    android:onClick="@{() -> viewModel.submit()}"
+                    android:text="确定"/>
+            </com.vlonjatg.progressactivity.ProgressLinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

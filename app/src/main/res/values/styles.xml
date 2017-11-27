@@ -1,0 +1,234 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/anti_flash_white</item>
+        <item name="buttonStyle">@style/DefaultButtonStyle</item>
+        <item name="android:screenOrientation">portrait</item>
+        <item name="editTextStyle">@style/DefaultEditTextStyle</item>
+    </style>
+
+    <style name="MatisseTheme" parent="Matisse.Zhihu">
+        <item name="toolbar">@style/MatisseToolbarTheme</item>
+        <item name="item.checkCircle.backgroundColor">@color/colorAccent</item>
+        <item name="bottomToolbar.preview.textColor">@color/selector_matisse_bottom_toolbar_left_textcolor</item>
+        <item name="bottomToolbar.apply.textColor">@color/selector_matisse_bottom_toolbar_right_textcolor</item>
+        <item name="preview.bottomToolbar.apply.textColor">@color/selector_matisse_bottom_toolbar_right_textcolor</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/anti_flash_white</item>
+        <item name="buttonStyle">@style/DefaultButtonStyle</item>
+        <item name="android:screenOrientation">portrait</item>
+    </style>
+
+    <style name="MatisseToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="navigationIcon">@drawable/ic_chevron_left</item>
+    </style>
+
+    <style name="LoginActTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:screenOrientation">portrait</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="buttonStyle">@style/DefaultButtonStyle</item>
+        <item name="editTextStyle">@style/DefaultEditTextStyle</item>
+    </style>
+
+    <style name="LoadingTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+    <style name="DefaultButtonStyle" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/selector_bg_main_button</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/t18</item>
+    </style>
+
+    <style name="DefaultEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/gray19</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">@dimen/t14</item>
+        <item name="android:textColorHint">@color/aluminum</item>
+    </style>
+
+    <style name="OperationTopText">
+        <item name="android:lineSpacingExtra">@dimen/m4</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/t25</item>
+    </style>
+
+    <style name="OperationItemStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/s112</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:drawablePadding">@dimen/p13</item>
+        <item name="android:paddingBottom">@dimen/p24</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">@dimen/p24</item>
+        <item name="android:textColor">@color/gray19</item>
+    </style>
+
+    <style name="MineTopText">
+        <item name="android:lineSpacingExtra">@dimen/m2</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/t13</item>
+    </style>
+
+    <style name="MineTopLabelText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/mountain_mist</item>
+        <item name="android:textSize">@dimen/t11</item>
+    </style>
+
+    <style name="MineItemStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/s50</item>
+        <item name="android:drawableRight">@drawable/ic_right_arrow</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/p15</item>
+        <item name="android:drawablePadding">@dimen/p9</item>
+        <item name="android:paddingRight">@dimen/p15</item>
+    </style>
+
+    <style name="ChangePasswordEditTextStyle">
+        <item name="android:textSize">@dimen/t15</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/s50</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:paddingLeft">@dimen/p15</item>
+        <item name="android:paddingRight">@dimen/p15</item>
+        <item name="android:textColor">@color/gray19</item>
+        <item name="android:textColorHint">@color/iron</item>
+    </style>
+
+    <style name="ShopInfoEditTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/s50</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">end|center_vertical</item>
+        <item name="android:paddingLeft">@dimen/p15</item>
+        <item name="android:paddingRight">@dimen/p15</item>
+        <item name="android:textColor">@color/gray19</item>
+        <item name="android:textSize">@dimen/t14</item>
+        <item name="android:textColorHint">@color/iron</item>
+    </style>
+
+    <style name="BusinessStateRadioButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/s50</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableRight">@drawable/selector_rb_business_state</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/p15</item>
+        <item name="android:paddingRight">@dimen/p15</item>
+        <item name="android:textColor">@color/selector_rb_textcolor_business_state</item>
+    </style>
+
+    <style name="BusinessStatisticsLabelViewStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/mine_shaft</item>
+        <item name="android:textSize">@dimen/t13</item>
+        <item name="android:gravity">center</item>
+        <item name="android:lineSpacingExtra">@dimen/m10</item>
+    </style>
+
+    <style name="GoodsManageBottomTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:drawablePadding">@dimen/p6</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/mine_shaft</item>
+        <item name="android:textSize">@dimen/t13</item>
+    </style>
+
+    <style name="OrderItemButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/s34</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/p18</item>
+        <item name="android:paddingRight">@dimen/p18</item>
+        <item name="android:textSize">@dimen/t13</item>
+    </style>
+
+    <style name="TabTextAppearance">
+        <item name="android:textSize">@dimen/t15</item>
+    </style>
+
+    <style name="NewGoodsSortTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/m20</item>
+        <item name="android:layout_marginLeft">@dimen/m15</item>
+        <item name="android:textColor">@color/aluminum</item>
+        <item name="android:layout_marginBottom">@dimen/m8</item>
+        <item name="android:textSize">@dimen/t12</item>
+    </style>
+
+    <style name="AddGoodsEditTextStyle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/mine_shaft</item>
+        <item name="android:textColorHint">@color/iron</item>
+        <item name="android:textSize">@dimen/t14</item>
+    </style>
+
+    <style name="AddActivityEditTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/s50</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingLeft">@dimen/p15</item>
+        <item name="android:textColor">@color/mine_shaft</item>
+        <item name="android:textColorHint">@color/iron</item>
+        <item name="android:textSize">@dimen/t15</item>
+    </style>
+
+    <style name="ActivityDetailLabelViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/s50</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingLeft">@dimen/p15</item>
+        <item name="android:textColor">@color/mine_shaft</item>
+        <item name="android:textSize">@dimen/t15</item>
+    </style>
+
+    <style name="AddActivityLabelViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/s50</item>
+        <item name="android:drawableRight">@drawable/ic_right_arrow</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/p15</item>
+        <item name="android:textColor">@color/mine_shaft</item>
+        <item name="android:paddingRight">@dimen/p15</item>
+        <item name="android:textSize">@dimen/t15</item>
+    </style>
+</resources>

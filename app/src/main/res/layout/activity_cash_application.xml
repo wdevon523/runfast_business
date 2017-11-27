@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.operation.cash.CashApplicationActivity"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.cash.CashViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <com.vlonjatg.progressactivity.ProgressLinearLayout
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m47"
+                android:text="提现金额"
+                android:textColor="@color/mine_shaft"
+                android:textSize="@dimen/t16"/>
+
+            <com.gxuc.runfast.business.widget.LabelView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m25"
+                android:text="@{viewModel.amount}"
+                android:textColor="@color/mine_shaft"
+                android:textSize="@dimen/t40"
+                app:leftText="￥"
+                app:leftTextAppearance="@style/LabelView_40dp_mine_shaft"
+                tools:text="-30.00"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/m10"
+                android:layout_marginRight="@dimen/m10"
+                android:layout_marginTop="@dimen/m62"
+                android:drawableLeft="@drawable/cash_application_icon"
+                android:drawablePadding="@dimen/p6"
+                android:text="@{viewModel.date}"
+                android:textColor="@color/aluminum"
+                android:textSize="@dimen/t11"
+                tools:text="当前金额统计日期为：2017-08-08日至2017-08-08日"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/s49"
+                android:layout_marginLeft="@dimen/m10"
+                android:layout_marginRight="@dimen/m10"
+                android:layout_marginTop="@dimen/m12"
+                android:onClick="@{() -> viewModel.applyForCash()}"
+                android:text="提现申请"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m35"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/MineItemStyle"
+                    android:onClick="@{()->view.toRecord(0)}"
+                    android:text="收入记录"/>
+
+                <include layout="@layout/divider"/>
+
+                <TextView
+                    style="@style/MineItemStyle"
+                    android:onClick="@{()->view.toRecord(1)}"
+                    android:text="提现记录"/>
+            </LinearLayout>
+        </com.vlonjatg.progressactivity.ProgressLinearLayout>
+    </LinearLayout>
+</layout>

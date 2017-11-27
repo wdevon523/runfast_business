@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LabelView_10dp_aluminum">
+        <item name="android:textColor">@color/aluminum</item>
+        <item name="android:textSize">@dimen/t10</item>
+    </style>
+
+    <style name="LabelView_11dp_mountain_mist">
+        <item name="android:textColor">@color/mountain_mist</item>
+        <item name="android:textSize">@dimen/t11</item>
+    </style>
+
+    <style name="LabelView_11dp_aluminum">
+        <item name="android:textColor">@color/aluminum</item>
+        <item name="android:textSize">@dimen/t11</item>
+    </style>
+
+    <style name="LabelView_11dp_iron">
+        <item name="android:textColor">@color/iron</item>
+        <item name="android:textSize">@dimen/t11</item>
+    </style>
+
+    <style name="LabelView_11dp_apple">
+        <item name="android:textColor">@color/apple</item>
+        <item name="android:textSize">@dimen/t11</item>
+    </style>
+
+    <style name="LabelView_12dp_gray19">
+        <item name="android:textColor">@color/gray19</item>
+        <item name="android:textSize">@dimen/t12</item>
+    </style>
+
+    <style name="LabelView_13dp_white">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/t13</item>
+    </style>
+
+    <style name="LabelView_13dp_mine_shaft">
+        <item name="android:textColor">@color/mine_shaft</item>
+        <item name="android:textSize">@dimen/t13</item>
+    </style>
+
+    <style name="LabelView_13dp_tan_hide">
+        <item name="android:textColor">@color/tan_hide</item>
+        <item name="android:textSize">@dimen/t13</item>
+    </style>
+
+    <style name="LabelView_14dp_gray19">
+        <item name="android:textColor">@color/gray19</item>
+        <item name="android:textSize">@dimen/t14</item>
+    </style>
+
+    <style name="LabelView_15dp_gray19">
+        <item name="android:textColor">@color/gray19</item>
+        <item name="android:textSize">@dimen/t15</item>
+    </style>
+
+    <style name="LabelView_15dp_mine_shaft">
+        <item name="android:textColor">@color/mine_shaft</item>
+        <item name="android:textSize">@dimen/t15</item>
+    </style>
+
+    <style name="LabelView_18dp_sunset_orange">
+        <item name="android:textColor">@color/sunset_orange</item>
+        <item name="android:textSize">@dimen/t18</item>
+    </style>
+
+    <style name="LabelView_40dp_mine_shaft">
+        <item name="android:textColor">@color/mine_shaft</item>
+        <item name="android:textSize">@dimen/t40</item>
+    </style>
+</resources>

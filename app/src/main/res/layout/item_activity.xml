@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="activity"
+            type="com.gxuc.runfast.business.data.bean.Activity"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.goods.activity.ActivityListViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:onClick="@{() -> viewModel.viewActivityDetail(activity)}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bg_message_item"
+        android:paddingBottom="@dimen/p15"
+        tools:layout_margin="@dimen/m10">
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="@dimen/s82"
+            android:layout_height="@dimen/s27"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/m15"
+            android:layout_marginTop="11.5dp"
+            android:background="@{activity.status == 0 ? @drawable/shape_bg_activity_status_finish : activity.status == 1 ? @drawable/shape_bg_activity_status_progress : @drawable/shape_bg_activity_status_pause}"
+            android:text="@{activity.statusName}"
+            android:textSize="@dimen/t14"
+            tools:text="进行中"/>
+
+        <TextView
+            android:id="@+id/tv_activity_name"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/s50"
+            android:layout_alignLeft="@id/btn"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/m15"
+            android:gravity="center_vertical"
+            android:text="@{activity.name}"
+            android:textColor="@color/mine_shaft"
+            android:textSize="@dimen/t14"
+            tools:text="全程半价"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/tv_activity_name"
+            android:layout_marginLeft="@dimen/m15"
+            android:background="@color/gray6"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginTop="@dimen/m10"
+            android:drawablePadding="@dimen/p6"
+            android:text="@{activity.describe}"
+            android:textColor="@color/aluminum"
+            android:textSize="@dimen/t11"
+            app:activityType="@{activity.type}"
+            tools:text="全场满30元减10元"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/divider"
+            android:layout_marginRight="@dimen/m15"
+            android:layout_marginTop="@dimen/m10"
+            android:text="@{activity.startTime + `-` + activity.endTime}"
+            android:textColor="@color/aluminum"
+            android:textSize="@dimen/t11"
+            tools:text="2017.08.07-2017.08.17"/>
+    </RelativeLayout>
+</layout>

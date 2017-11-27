@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.mine.feedback.FeedbackViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s150"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginRight="@dimen/m15"
+            android:layout_marginTop="@dimen/m15"
+            android:background="@drawable/shape_border_rect_gray6"
+            android:gravity="top|start"
+            android:hint="请输入对用户评价的改进方法（100个字以内）"
+            android:padding="@dimen/p10"
+            android:text="@={viewModel.feedback}"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s45"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginRight="@dimen/m15"
+            android:layout_marginTop="@dimen/m15"
+            android:background="@drawable/shape_border_rect_gray6"
+            android:hint="请填写您的电子邮箱(选填)"
+            android:padding="@dimen/p10"
+            android:text="@={viewModel.email}"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s49"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginRight="@dimen/m15"
+            android:layout_marginTop="@dimen/m20"
+            android:onClick="@{() -> viewModel.submitFeedback()}"
+            android:text="提交"/>
+    </LinearLayout>
+</layout>

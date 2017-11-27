@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.mine.MineFragment"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.mine.MineViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_charcoal"
+        android:paddingBottom="@dimen/p10"
+        android:paddingTop="@dimen/p10">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="@dimen/s45"
+            android:layout_height="@dimen/s45"
+            android:layout_marginLeft="@dimen/m10"
+            android:layout_marginRight="@dimen/m10"
+            app:circleImageUrl="@{viewModel.logoUrl}"
+            tools:background="@color/white"/>
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="@dimen/s65"
+            android:layout_height="@dimen/s20"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape_bg_mine_business_state"
+            android:drawablePadding="@dimen/p12"
+            android:drawableRight="@drawable/ic_bottom_triangle"
+            android:gravity="end|center_vertical"
+            android:onClick="@{()->view.toChangeBusinessState()}"
+            android:paddingRight="@dimen/p8"
+            android:text="@{viewModel.statusName}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/t11"
+            tools:text="营业"/>
+
+        <TextView
+            android:id="@+id/tv_shop_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:drawablePadding="@dimen/p8"
+            android:drawableRight="@drawable/ic_right_arrow_white"
+            android:onClick="@{() -> view.showChangeShopNameDialog()}"
+            android:text="@{viewModel.name}"
+            android:textColor="@color/white"
+            tools:text="卡乐滋"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_shop_name"
+            android:layout_marginTop="@dimen/m6"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="@{viewModel.activities.isEmpty() ? View.GONE : View.VISIBLE}">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/m3"
+                android:src="@drawable/activity_jian"
+                android:visibility="@{viewModel.activities.contains(`1`) ? View.VISIBLE : View.GONE}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:visibility="@{viewModel.activities.contains(`2`) ? View.VISIBLE : View.GONE}"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/m3"
+                android:src="@drawable/activity_zhe"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:visibility="@{viewModel.activities.contains(`3`) ? View.VISIBLE : View.GONE}"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/m3"
+                android:src="@drawable/activity_zeng"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.activities.contains(`4`) ? View.VISIBLE : View.GONE}"
+                android:layout_marginRight="@dimen/m3"
+                android:src="@drawable/activity_te"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:visibility="@{viewModel.activities.contains(`5`) ? View.VISIBLE : View.GONE}"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/m3"
+                android:src="@drawable/activity_mian"/>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

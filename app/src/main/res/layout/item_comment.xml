@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="id"
+            type="long"/>
+
+        <variable
+            name="avatarUrl"
+            type="String"/>
+
+        <variable
+            name="username"
+            type="String"/>
+
+        <variable
+            name="time"
+            type="String"/>
+
+        <variable
+            name="star"
+            type="int"/>
+
+        <variable
+            name="content"
+            type="String"/>
+
+        <variable
+            name="hasLabel"
+            type="boolean"/>
+
+        <variable
+            name="label"
+            type="String"/>
+
+        <variable
+            name="hasFeedback"
+            type="boolean"/>
+
+        <variable
+            name="feedback"
+            type="String"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.comment.CommentViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="@{()->viewModel.toCommentDetail(id)}"
+        android:padding="@dimen/p15">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="@dimen/s34"
+            android:layout_height="@dimen/s34"
+            android:layout_marginRight="@dimen/m12"
+            app:circleImageUrl="@{avatarUrl}"
+            tools:background="@color/aluminum"/>
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:text="@{username}"
+            android:textColor="@color/mine_shaft"
+            android:textSize="@dimen/t14"
+            tools:text="匿名用户"/>
+
+        <TextView
+            android:id="@+id/tv_comment_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tv_username"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/tv_username"
+            android:gravity="end"
+            android:text="@{time}"
+            android:textColor="@color/gray19"
+            android:textSize="@dimen/t11"
+            tools:text="2017-07-22 23:41-58"/>
+
+        <LinearLayout
+            android:id="@+id/ll_star_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_username"
+            android:layout_marginTop="@dimen/m6"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/user_evaluate_star"
+                android:tint="@{star > -2 ? @color/crusta : @color/pumice}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/user_evaluate_star"
+                android:tint="@{star > -1 ? @color/crusta : @color/pumice}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/user_evaluate_star"
+                android:tint="@{star > 0 ? @color/crusta : @color/pumice}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/user_evaluate_star"
+                android:tint="@{star > 1 ? @color/crusta : @color/pumice}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/user_evaluate_star"
+                android:tint="@{star > 2 ? @color/crusta : @color/pumice}"
+                tools:tint="@color/pumice"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_user_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_star_rating"
+            android:layout_marginTop="@dimen/m15"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:text="@{content}"
+            android:textColor="@color/mine_shaft"
+            android:textSize="@dimen/t13"
+            tools:text="配送快，准时送达"/>
+
+        <TextView
+            android:id="@+id/tv_comment_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_user_comment"
+            android:layout_marginTop="@dimen/m10"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:drawableLeft="@drawable/user_evaluate_label_icon"
+            android:drawablePadding="@dimen/p6"
+            android:text="@{label}"
+            android:textColor="@color/aluminum"
+            android:textSize="@dimen/t11"
+            android:visibility="@{hasLabel ? View.VISIBLE : View.GONE}"
+            tools:text="服务不错，干净卫生"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_comment_label"
+            android:layout_marginTop="@dimen/m10"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:background="@color/black_haze"
+            android:maxLines="1"
+            android:padding="@dimen/p10"
+            android:text="@{feedback}"
+            android:textColor="@color/aluminum"
+            android:textSize="@dimen/t11"
+            android:visibility="@{hasFeedback ? View.VISIBLE : View.GONE}"
+            tools:text="商家回复：喜欢就好，谢谢支持！"/>
+    </RelativeLayout>
+</layout>

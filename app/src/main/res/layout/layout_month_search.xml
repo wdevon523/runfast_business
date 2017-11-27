@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.operation.statistics.monthly.MonthlyActivity"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.operation.statistics.monthly.MonthlyViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s80"
+        android:layout_margin="@dimen/m10"
+        android:background="@drawable/shape_bg_message_item"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="@dimen/s94"
+            android:layout_height="@dimen/s34"
+            android:layout_marginLeft="@dimen/m84"
+            android:background="@drawable/shape_border_round_gray6"
+            android:onClick="@{() -> view.showDatePicker()}">
+
+            <ImageView
+                android:id="@+id/iv1"
+                android:layout_width="@dimen/s19"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:scaleType="center"
+                android:src="@drawable/ic_bottom_triangle_gray"/>
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/iv1"
+                android:background="@color/gray6"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/divider1"
+                android:gravity="center"
+                android:text="@={viewModel.date}"
+                android:textColor="@color/mine_shaft"
+                android:textSize="@dimen/t12"
+                tools:text="2017.08"/>
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="@dimen/s50"
+            android:layout_marginRight="@dimen/m15"
+            android:background="@color/gray6"/>
+
+        <Button
+            android:layout_width="@dimen/s62"
+            android:layout_height="@dimen/s34"
+            android:layout_marginRight="@dimen/m15"
+            android:onClick="@{() -> viewModel.search()}"
+            android:text="查询"
+            android:textSize="@dimen/t13"/>
+    </LinearLayout>
+</layout>

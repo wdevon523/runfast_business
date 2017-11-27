@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="date"
+            type="String"/>
+
+        <variable
+            name="cashDate"
+            type="String"/>
+
+        <variable
+            name="amount"
+            type="String"/>
+
+        <variable
+            name="stateName"
+            type="String"/>
+
+        <variable
+            name="state"
+            type="int"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bg_message_item"
+        tools:layout_margin="@dimen/m10">
+
+        <TextView
+            android:id="@+id/tv_record_time"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/s30"
+            android:layout_marginLeft="@dimen/m15"
+            android:drawableLeft="@drawable/message_time_icon"
+            android:drawablePadding="@dimen/p6"
+            android:gravity="center_vertical"
+            android:text="@{date}"
+            android:textColor="@color/aluminum"
+            android:textSize="@dimen/t12"
+            tools:text="2017.08.07 10:52:53"/>
+
+        <TextView
+            android:id="@+id/tv_record_state"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/s30"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/m15"
+            android:layout_toRightOf="@id/tv_record_time"
+            android:gravity="center_vertical|right"
+            android:text="@{stateName}"
+            android:textColor="@color/selector_tv_textcolor_item_state"
+            android:textSize="@dimen/t12"
+            app:selected="@{state == 1}"
+            tools:text="已通过"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/tv_record_time"
+            android:layout_marginLeft="@dimen/m15"
+            android:background="@color/gray6"/>
+
+        <com.gxuc.runfast.business.widget.LabelView
+            android:id="@+id/tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginTop="@dimen/m14"
+            android:text="@{amount}"
+            android:textColor="@color/gray19"
+            android:textSize="@dimen/t12"
+            app:leftText="金额: "
+            app:rightText="元"
+            tools:text="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_amount"
+            android:layout_marginBottom="@dimen/m15"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginTop="@dimen/m10"
+            android:text="@{cashDate}"
+            android:textColor="@color/gray19"
+            android:textSize="@dimen/t12"
+            tools:text="提现日期: 2017.04.13-2017.05.22"/>
+    </RelativeLayout>
+</layout>

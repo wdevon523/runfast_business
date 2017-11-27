@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.mine.printer.ConnectPrinterActivity"/>
+
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.mine.printer.PrinterViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginTop="@dimen/m20"
+            android:paddingBottom="@dimen/p8"
+            android:text="已配对打印机"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_paired_printer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:adapter="@{viewModel.pairedAdapter}"
+            app:layoutManager="@{view.pairedManager}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginTop="@dimen/m20"
+            android:paddingBottom="@dimen/p8"
+            android:text="未配对打印机"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_unpaired_printer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:adapter="@{viewModel.unpairedAdapter}"
+            app:layoutManager="@{view.unpairedManager}"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s49"
+            android:layout_marginLeft="@dimen/m10"
+            android:layout_marginRight="@dimen/m10"
+            android:layout_marginTop="@dimen/m50"
+            android:enabled="@{viewModel.isSupportedBluetooth}"
+            android:onClick="@{() -> view.searchPrinters()}"
+            android:text="搜索设备"/>
+    </LinearLayout>
+</layout>

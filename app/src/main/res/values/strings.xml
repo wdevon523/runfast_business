@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">跑腿快车</string>
+
+    <string name="add_goods_sort">新增分类</string>
+
+    <string name="rule_password">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!$%^*()#{}[]:.?+&#064;&#038;</string>
+
+    <string name="order_goods_count">商品(%1$s)</string>
+    <string name="header_pending_order_text">待处理%1$d单，总额%2$s元</string>
+    <string name="header_going_order_text">进行中%1$d单，总额%2$s元</string>
+    <string name="header_completed_order_text">已完成%1$d单，总额%2$s元</string>
+    <string name="header_canceled_order_text">已取消%1$d单，总额%2$s元</string>
+    <string name="about_us">
+        跑腿快车商城，是一个由微信公众号和APP组成的移动端购物系统，跑腿快车商城总部位于广西南宁，
+        也是立足广西本土面向全国的网上购物、美食、外卖等一体化网上商城！让您享受“足不出户 一站服务”
+    </string>
+
+    <string name="bond_bonded">已配对</string>
+    <string name="bond_unbonded">未配对</string>
+
+    <string name="at">于</string>
+    <string name="delivery">送达</string>
+    <string name="yuan">￥</string>
+    <string name="real_income">本单实际收入</string>
+    <string name="predict_income">本单预计收入</string>
+    <string name="returned">(已退还)</string>
+    <string name="payed">(已支付)</string>
+    <string name="goods_unit">个商品</string>
+    <string name="putaway">上架</string>
+    <string name="sold_out">下架</string>
+    <string name="confirm_edit">确认修改</string>
+    <string name="confirm_add">确认添加</string>
+    <string name="disconnect">断开</string>
+    <string name="connect">连接</string>
+    <string name="next">下一步</string>
+    <string name="confirm">确认</string>
+    <string name="input_phone">请输入您的手机号码</string>
+    <string name="input_verify_code">请输入短信验证码</string>
+    <string name="send_verify_code">我们将发送验证码到您的手机</string>
+    <string name="sent">验证码已发送至&#x0020;</string>
+    <string name="select_activity_type">请选择活动类型</string>
+    <string name="select_start_time">请选择开始时间</string>
+    <string name="select_end_time">请选择结束时间</string>
+    <string name="menu">菜单</string>
+    <string name="view">查看</string>
+    <string name="update">修改</string>
+    <string name="save">保存</string>
+</resources>

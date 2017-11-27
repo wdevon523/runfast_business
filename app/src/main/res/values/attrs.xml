@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="leftText" format="string"/>
+    <attr name="rightText" format="string"/>
+
+    <declare-styleable name="LabelView">
+        <attr name="leftText"/>
+        <attr name="rightText"/>
+        <attr name="topText" format="string"/>
+        <attr name="bottomText" format="string"/>
+        <attr name="leftTextAppearance" format="reference"/>
+        <attr name="rightTextAppearance" format="reference"/>
+        <attr name="topTextAppearance" format="reference"/>
+        <attr name="bottomTextAppearance" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="LabelEditText">
+        <attr name="labelText" format="string"/>
+        <attr name="labelPadding" format="dimension"/>
+        <attr name="labelTextColor" format="color"/>
+        <attr name="labelTextSize" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="JustifyTextView">
+        <attr name="leftText"/>
+        <attr name="rightText"/>
+        <attr name="leftTextSize" format="dimension"/>
+        <attr name="rightTextSize" format="dimension"/>
+        <attr name="leftTextColor" format="color|integer"/>
+        <attr name="rightTextColor" format="color|integer"/>
+        <attr name="leftIcon" format="reference"/>
+        <attr name="rightIcon" format="reference"/>
+        <attr name="leftIconPadding" format="dimension"/>
+        <attr name="rightIconPadding" format="dimension"/>
+    </declare-styleable>
+</resources>
