@@ -7,8 +7,10 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.gxuc.runfast.business.App;
 import com.gxuc.runfast.business.R;
 
 import cn.jpush.android.api.JPushInterface;
@@ -48,6 +50,8 @@ public class ActLifecycleCallback implements Application.ActivityLifecycleCallba
 
     @Override
     public void onActivityResumed(Activity activity) {
+        App.isFromBackGround = true;
+        Log.i("bo", "APP回到了前台");
         JPushInterface.onResume(activity);
     }
 

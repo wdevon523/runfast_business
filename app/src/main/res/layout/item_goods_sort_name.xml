@@ -20,6 +20,8 @@
         android:layout_height="@dimen/s54"
         android:background="@{sort.selected ? @color/white : @color/anti_flash_white}"
         android:gravity="center"
+        android:paddingLeft="@dimen/m10"
+        android:paddingRight="@dimen/m10"
         android:onClick="@{() -> viewModel.selectGoodsSort(sort)}"
         android:text="@{sort.name}"
         android:textColor="@color/selector_tv_textcolor_item_goods_sort"

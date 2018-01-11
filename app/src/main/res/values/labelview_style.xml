@@ -6,6 +6,11 @@
         <item name="android:textSize">@dimen/t10</item>
     </style>
 
+    <style name="LabelView_10dp_mine_shaft">
+        <item name="android:textColor">@color/mine_shaft</item>
+        <item name="android:textSize">@dimen/t10</item>
+    </style>
+
     <style name="LabelView_11dp_mountain_mist">
         <item name="android:textColor">@color/mountain_mist</item>
         <item name="android:textSize">@dimen/t11</item>
@@ -24,6 +29,11 @@
     <style name="LabelView_11dp_apple">
         <item name="android:textColor">@color/apple</item>
         <item name="android:textSize">@dimen/t11</item>
+    </style>
+
+    <style name="LabelView_12dp_fb7d30">
+        <item name="android:textColor">@color/text_fb7d30</item>
+        <item name="android:textSize">@dimen/m12</item>
     </style>
 
     <style name="LabelView_12dp_gray19">

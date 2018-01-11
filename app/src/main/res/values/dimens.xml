@@ -95,6 +95,7 @@
     <dimen name="s4">4dp</dimen>
     <dimen name="s8">8dp</dimen>
     <dimen name="s11">11dp</dimen>
+    <dimen name="s14">14dp</dimen>
     <dimen name="s16">16dp</dimen>
     <dimen name="s18">18dp</dimen>
     <dimen name="s19">19dp</dimen>

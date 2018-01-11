@@ -2,6 +2,7 @@ package com.gxuc.runfast.business.ui.operation.goods.activity.add;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.gxuc.runfast.business.R;
 import com.gxuc.runfast.business.databinding.ActivityAddActivityBinding;
@@ -60,6 +61,7 @@ public class AddActivityActivity extends BaseActivity
             mVM.typeName.set(typeName);
         });
 
+        mVM.choose.set(TextUtils.isEmpty(mVM.goodsId.get()) ? "请选择菜单" : "查看已选择菜单");
         mStartTimePicker = new DateBottomSheet(this);
         mStartTimePicker.setCallback(date -> mVM.startTime.set(date));
 
@@ -92,6 +94,7 @@ public class AddActivityActivity extends BaseActivity
             } else {
                 mVM.goodsId.set(data.getStringExtra("ids"));
             }
+            mVM.choose.set(TextUtils.isEmpty(data.getStringExtra("ids")) ? "请选择菜单" : "查看已选择菜单");
         }
     }
 

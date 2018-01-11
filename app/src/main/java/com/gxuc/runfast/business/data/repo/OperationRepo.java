@@ -56,7 +56,8 @@ public class OperationRepo {
 
     private List<GoodsSort> goodsSorts = new ArrayList<>();
 
-    private OperationRepo() {}
+    private OperationRepo() {
+    }
 
     public static OperationRepo get() {
         return OperationRepoHolder.sInstance;
@@ -356,7 +357,7 @@ public class OperationRepo {
                 .subscribeOn(Schedulers.io());
     }
 
-    public void resetIncomeRecordPages(){
+    public void resetIncomeRecordPages() {
         incomeRecordPages = -1;
     }
 
@@ -364,7 +365,7 @@ public class OperationRepo {
         return incomeRecordPages;
     }
 
-    public void resetCashRecordPages(){
+    public void resetCashRecordPages() {
         cashRecordPages = -1;
     }
 
@@ -430,7 +431,9 @@ public class OperationRepo {
 
     public List<Goods> getGoodsList() {
         List<Goods> goods = new ArrayList<>();
-        goods.addAll(goodsSorts.get(0).goods);
+        if (goodsSorts != null && goodsSorts.size() > 0) {
+            goods.addAll(goodsSorts.get(0).goods);
+        }
         return goods;
     }
 

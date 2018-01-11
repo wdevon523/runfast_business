@@ -1,13 +1,13 @@
 package com.gxuc.runfast.business;
 
 import android.app.Application;
-import android.content.Intent;
+import android.content.Context;
+import android.support.multidex.MultiDex;
+import android.util.Log;
 
-import com.gxuc.runfast.business.BuildConfig;
 import com.gxuc.runfast.business.data.DataLayer;
 import com.gxuc.runfast.business.extension.ActLifecycleCallback;
 import com.gxuc.runfast.business.extension.glide.GlideApp;
-import com.gxuc.runfast.business.service.GrayService;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -15,6 +15,8 @@ import com.tencent.bugly.crashreport.CrashReport;
 import cn.jpush.android.api.JPushInterface;
 
 public class App extends Application {
+
+    public static boolean isFromBackGround = false;
 
     @Override
     public void onCreate() {
@@ -40,6 +42,12 @@ public class App extends Application {
     }
 
     @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
+    @Override
     public void onLowMemory() {
         super.onLowMemory();
         GlideApp.get(this).clearMemory();
@@ -49,6 +57,8 @@ public class App extends Application {
     public void onTrimMemory(int level) {
         super.onTrimMemory(level);
         if (level == TRIM_MEMORY_UI_HIDDEN) {
+            isFromBackGround = false;
+            Log.i("devon", "APP遁入后台");
             GlideApp.get(this).clearMemory();
         }
         GlideApp.get(this).trimMemory(level);
@@ -57,6 +67,7 @@ public class App extends Application {
     private void initJPush() {
         JPushInterface.setDebugMode(BuildConfig.DEBUG);
         JPushInterface.init(this);
-        JPushInterface.setAlias(this, 0, JPushInterface.getRegistrationID(this));
+//        JPushInterface.setAlias(this, 0, JPushInterface.getRegistrationID(this));
+//        Log.i("devon", "--------id------" + JPushInterface.getRegistrationID(this));
     }
 }

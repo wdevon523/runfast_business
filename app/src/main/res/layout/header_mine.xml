@@ -56,11 +56,11 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/iv_avatar"
             android:drawablePadding="@dimen/p8"
-            android:drawableRight="@drawable/ic_right_arrow_white"
             android:onClick="@{() -> view.showChangeShopNameDialog()}"
             android:text="@{viewModel.name}"
             android:textColor="@color/white"
             tools:text="卡乐滋"/>
+        <!--android:drawableRight="@drawable/ic_right_arrow_white"-->
 
         <LinearLayout
             android:layout_width="wrap_content"

@@ -102,7 +102,7 @@
                     style="@style/MineItemStyle"
                     android:drawableLeft="@drawable/business_statistics_day_order"
                     android:onClick="@{()->view.toDayOrder()}"
-                    android:text="当日订单清单"/>
+                    android:text="订单清单"/>
             </LinearLayout>
         </com.vlonjatg.progressactivity.ProgressLinearLayout>
     </LinearLayout>

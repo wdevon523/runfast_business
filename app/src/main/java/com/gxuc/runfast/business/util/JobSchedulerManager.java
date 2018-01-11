@@ -26,6 +26,10 @@ public class JobSchedulerManager {
 
     private JobSchedulerManager(Context ctxt) {
         this.mContext = ctxt;
+        // 如果JobService已经启动或API<21，返回
+        if (AliveJobService.isJobServiceAlive() || isBelowLOLLIPOP()) {
+            return;
+        }
         mJobScheduler = (JobScheduler) ctxt.getSystemService(Context.JOB_SCHEDULER_SERVICE);
     }
 

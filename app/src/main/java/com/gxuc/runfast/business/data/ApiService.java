@@ -22,6 +22,7 @@ import com.gxuc.runfast.business.data.response.LoadMonthliesResponse;
 import com.gxuc.runfast.business.data.response.LoadOperationInfoResponse;
 import com.gxuc.runfast.business.data.response.LoadOrdersResponse;
 import com.gxuc.runfast.business.data.response.LoginResponse;
+import com.gxuc.runfast.business.data.response.UpdateAppResponse;
 import com.gxuc.runfast.business.data.response.UploadFileResponse;
 
 import io.reactivex.Observable;
@@ -47,6 +48,18 @@ public interface ApiService {
             @Field("bptype") String bptype,
             @Field("vercode") int vercode,
             @Field("alias") String alias
+    );
+
+    @FormUrlEncoded
+    @POST("logout.do")
+    Observable<LoginResponse> logout(
+            @Field("alias") String alias
+    );
+
+    @FormUrlEncoded
+    @POST("checkAndroidVersion.do")
+    Observable<UpdateAppResponse> updateApp(
+            @Field("vercode") int vercode
     );
 
     @FormUrlEncoded

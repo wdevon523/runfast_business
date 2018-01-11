@@ -121,6 +121,7 @@ public class ConnectPrinterActivity extends BaseActivity
         super.onActivityResult(requestCode, resultCode, data);
         if (data != null && resultCode == RESULT_OK) {
             result = data;
+//            searchPrinters();
 //            BluetoothDevice device = (BluetoothDevice) result.getParcelableExtra("device");
 //            handleDevice(device);
         }

@@ -26,7 +26,10 @@ class PrinterReceiver extends BroadcastReceiver {
         String action = intent.getAction();
         if (BluetoothDevice.ACTION_FOUND.equals(action)) {
             BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-            if (device.getBluetoothClass().getMajorDeviceClass() == BluetoothClass.Device.Major.IMAGING) {
+//            if (device.getBluetoothClass().getMajorDeviceClass() == BluetoothClass.Device.Major.IMAGING) {
+//                mVM.addDevice(device);
+//            }
+            if (device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.Major.IMAGING) {
                 mVM.addDevice(device);
             }
         } else if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {

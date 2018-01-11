@@ -16,11 +16,14 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.gxuc.runfast.business.BuildConfig;
 import com.gxuc.runfast.business.R;
@@ -38,6 +41,13 @@ import com.gxuc.runfast.business.util.JobSchedulerManager;
 import com.gxuc.runfast.business.util.SystemUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
+
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
 import static android.content.DialogInterface.BUTTON_POSITIVE;
 
@@ -46,10 +56,13 @@ public class MainActivity extends BaseActivity implements LayoutProvider {
     public static final String MESSAGE_RECEIVED_ACTION = "com.gxuc.runfast.bussiness.MainActivity.MESSAGE_RECEIVED_ACTION";
     public static final String KEY_MESSAGE = "message";
     public static final String BROADCAST_ACTION = "com.lsl.corn";
+    private String NEW_ORDER = "neworder.caf";
+    private String NEW_CANCEL = "newcancel.caf";
     private SparseArray<Fragment> mFragments = new SparseArray<>(4);
     private int preCheckedId;
     // JobService，执行系统任务
     private JobSchedulerManager mJobManager;
+    private boolean isExit = false;
 
 //    private AutoReceiveOrderReceiver receiver = new AutoReceiveOrderReceiver();
 
@@ -77,9 +90,15 @@ public class MainActivity extends BaseActivity implements LayoutProvider {
 
     @Override
     protected void onInitViews() {
-        mJobManager = JobSchedulerManager.getJobSchedulerInstance(this);
-        mJobManager.startJobScheduler();
 
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            Intent grayIntent = new Intent(getApplicationContext(), GrayService.class);
+            startService(grayIntent);
+        } else {
+            mJobManager = JobSchedulerManager.getJobSchedulerInstance(this);
+            mJobManager.startJobScheduler();
+        }
+        bindJpushAlias();
         registerMessageReceiver();
         registerWakeReceiver();
         requestPermissions();
@@ -94,6 +113,24 @@ public class MainActivity extends BaseActivity implements LayoutProvider {
 //            startActivity(intent);
 //        }
     }
+
+    private void bindJpushAlias() {
+
+        String alias = SystemUtils.getIMEI(this);
+        if (TextUtils.isEmpty(alias)){
+            alias = JPushInterface.getRegistrationID(this);
+        }
+
+        JPushInterface.setAlias(this, alias, new TagAliasCallback() {
+            @Override
+            public void gotResult(int i, String s, Set<String> set) {
+                Log.d("  绑定极光 ", "[initJPush] 设置别名: " + "i:" + i
+                        + ",s:" + s + ",set:" + set);
+            }
+        });
+
+    }
+
 
     public void registerMessageReceiver() {
         mMessageReceiver = new MessageReceiver();
@@ -116,12 +153,19 @@ public class MainActivity extends BaseActivity implements LayoutProvider {
         public void onReceive(Context context, Intent intent) {
             try {
                 if (MESSAGE_RECEIVED_ACTION.equals(intent.getAction())) {
-                    if (BusinessRepo.get().isAutomatic()) {
-                        OrderManageFragment orderManageFragment = (OrderManageFragment) mFragments.get(R.id.nav_order_manage);
-                        orderManageFragment.refreshNewOrder();
-                    } else {
-                        PendingOrderFragment pendingOrderFragment = (PendingOrderFragment) mFragments.get(R.id.nav_pending_order);
+                    String sound = intent.getStringExtra(KEY_MESSAGE);
+                    OrderManageFragment orderManageFragment = (OrderManageFragment) mFragments.get(R.id.nav_order_manage);
+                    PendingOrderFragment pendingOrderFragment = (PendingOrderFragment) mFragments.get(R.id.nav_pending_order);
+
+                    if (TextUtils.equals(sound, NEW_ORDER)) {
+                        if (BusinessRepo.get().isAutomatic()) {
+                            orderManageFragment.refreshNewOrder();
+                        } else {
+                            pendingOrderFragment.refreshNewOrder();
+                        }
+                    } else if (TextUtils.equals(sound, NEW_CANCEL)) {
                         pendingOrderFragment.refreshNewOrder();
+                        orderManageFragment.refreshNewOrder();
                     }
                 }
             } catch (Exception e) {
@@ -193,6 +237,13 @@ public class MainActivity extends BaseActivity implements LayoutProvider {
                         showPermissionDialog("应用需要获取读写外部存储权限,请前往应用信息-权限中开启", false);
                     }
                 });
+//        new RxPermissions(this)
+//                .request(Manifest.permission.READ_PHONE_STATE)
+//                .subscribe(hasPermission -> {
+//                    if (!hasPermission) {
+//                        showPermissionDialog("应用需要获取读写设备信息权限,请前往应用信息-权限中开启", false);
+//                    }
+//                });
 
         if (!SystemUtils.isNotificationEnabled(this)) {
             showPermissionDialog("应用需要获取通知栏权限,请前往应用信息-权限中开启", true);
@@ -253,5 +304,37 @@ public class MainActivity extends BaseActivity implements LayoutProvider {
     protected void onDestroy() {
         unregisterReceiver(mBroadcastReceiver);
         super.onDestroy();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exitApp();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void exitApp() {
+        if (!isExit) {
+            isExit = true;
+            Toast.makeText(this, "再按一次返回退出程序", Toast.LENGTH_SHORT).show();
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    isExit = false;
+                }
+            }, 2000);
+        } else {
+            // 获取自己的PID来结�?
+            // android.os.Process.killProcess(android.os.Process.myPid());
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);// 注意
+            intent.addCategory(Intent.CATEGORY_HOME);
+            startActivity(intent);
+//            finish();
+        }
     }
 }

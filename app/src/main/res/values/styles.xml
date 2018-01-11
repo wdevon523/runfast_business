@@ -173,8 +173,8 @@
         <item name="android:layout_height">@dimen/s34</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:gravity">center</item>
-        <item name="android:paddingLeft">@dimen/p18</item>
-        <item name="android:paddingRight">@dimen/p18</item>
+        <item name="android:paddingLeft">@dimen/p15</item>
+        <item name="android:paddingRight">@dimen/p15</item>
         <item name="android:textSize">@dimen/t13</item>
     </style>
 
@@ -231,4 +231,10 @@
         <item name="android:paddingRight">@dimen/p15</item>
         <item name="android:textSize">@dimen/t15</item>
     </style>
+
+    <style name="Theme_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/dialog_bg_corner_radius</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
 </resources>

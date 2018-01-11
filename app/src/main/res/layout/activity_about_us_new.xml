@@ -1,52 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-    <include layout="@layout/toolbar" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/m30"
-        android:src="@mipmap/ic_launcher" />
+    <data>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/m15"
-        android:text="版本号：2.0.1"
-        android:textColor="@color/text_999999"
-        android:textSize="@dimen/m12" />
+        <import type="android.view.View" />
 
-    <TextView
-        style="@style/MineItemStyle"
-        android:layout_marginTop="@dimen/m40"
-        android:background="@color/white"
-        android:text="版本更新"/>
+        <variable
+            name="view"
+            type="com.gxuc.runfast.business.ui.mine.about.AboutUsActivity" />
 
-    <!--<RelativeLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/m45"-->
-    <!--android:layout_marginTop="@dimen/m40"-->
-    <!--android:background="@color/white">-->
+        <variable
+            name="viewModel"
+            type="com.gxuc.runfast.business.ui.mine.about.AboutUsViewModel" />
+    </data>
 
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_centerVertical="true"-->
-    <!--android:layout_marginLeft="@dimen/m15"-->
-    <!--android:text="版本更新"-->
-    <!--android:textColor="@color/text_333333"-->
-    <!--android:textSize="@dimen/m16" />-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_about_us">
 
-    <!--<ImageView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <!--</RelativeLayout>-->
+            <include layout="@layout/toolbar" />
 
-</LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/m30"
+                android:src="@mipmap/ic_launcher" />
+
+            <com.gxuc.runfast.business.widget.LabelView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/m15"
+                android:text="@={viewModel.versionName}"
+                app:leftText="版本号: "
+                app:leftTextAppearance="@style/LabelView_12dp_fb7d30"
+                android:textColor="@color/text_fb7d30"
+                android:textSize="@dimen/m12" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/m10"
+                android:text="微信公众号：跑腿快车商城"
+                android:textColor="@color/text_999999"
+                android:textSize="@dimen/m12" />
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/m40"
+                android:background="@color/white"
+                android:onClick="@{() -> viewModel.updateApp()}"
+                android:gravity="center"
+                android:text="版本更新" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/m10"
+                android:text="广西跑腿快车电子商务有限公司"
+                android:textColor="@color/text_999999"
+                android:textSize="@dimen/m12" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Guangxi Express Errands Electronic Commerce Inc"
+                android:textColor="@color/text_999999"
+                android:textSize="@dimen/m12" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

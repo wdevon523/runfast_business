@@ -163,7 +163,7 @@
                         <com.sevenheaven.iosswitch.ShSwitchView
                             android:layout_width="@dimen/s60"
                             android:layout_height="@dimen/s40"
-                            app:on="@{viewModel.needFullPrice}"
+                            app:on="@={viewModel.needFullPrice}"
                             app:tintColor="@color/crusta"/>
                     </LinearLayout>
 
@@ -255,7 +255,7 @@
                         <com.sevenheaven.iosswitch.ShSwitchView
                             android:layout_width="@dimen/s60"
                             android:layout_height="@dimen/s40"
-                            app:on="@{viewModel.needPackingCharge}"
+                            app:on="@={viewModel.needPackingCharge}"
                             app:tintColor="@color/crusta"/>
                     </LinearLayout>
 

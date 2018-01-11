@@ -79,8 +79,8 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> implements M
     }
 
     public void showChangeShopNameDialog() {
-        mDialog.setText(mVM.name.get());
-        mDialog.show();
+//        mDialog.setText(mVM.name.get());
+//        mDialog.show();
     }
 
     public void toChangeBusinessState() {
@@ -122,6 +122,7 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> implements M
         startAct(LoginActivity.class);
         getActivity().finish();
     }
+
 
     @Override
     public void onDestroyView() {

@@ -21,6 +21,7 @@ public class ActivityViewModel extends BaseViewModel {
     public ObservableField<String> startTime = new ObservableField<>();
     public ObservableField<String> endTime = new ObservableField<>();
     public ObservableField<String> full = new ObservableField<>();
+    public ObservableField<String> choose = new ObservableField<>();
     public ObservableField<String> less = new ObservableField<>();
     public ObservableField<String> discount = new ObservableField<>();
     public ObservableField<String> disprice = new ObservableField<>();

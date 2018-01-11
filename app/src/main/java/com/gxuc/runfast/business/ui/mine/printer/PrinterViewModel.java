@@ -58,9 +58,9 @@ public class PrinterViewModel extends BaseViewModel {
     }
 
     void addDevice(BluetoothDevice device) {
-        if (device.getBluetoothClass().getMajorDeviceClass() != BluetoothClass.Device.Major.IMAGING) {
-            return;
-        }
+//        if (device.getBluetoothClass().getMajorDeviceClass() != BluetoothClass.Device.Major.IMAGING) {
+//            return;
+//        }
 
         ItemPrinterBindingModel_ model = new ItemPrinterBindingModel_()
                 .id(device.getAddress())
@@ -148,7 +148,7 @@ public class PrinterViewModel extends BaseViewModel {
         ArrayList<ItemPrinterBindingModel_> models = new ArrayList<>();
         if (devices != null && !devices.isEmpty()) {
             for (BluetoothDevice device : devices) {
-                if (device.getBluetoothClass().getMajorDeviceClass() != BluetoothClass.Device.Major.IMAGING) continue;
+//                if (device.getBluetoothClass().getMajorDeviceClass() != BluetoothClass.Device.Major.IMAGING) continue;
 
                 if (!isBonded) {
                     BluetoothHelper.connect(device);

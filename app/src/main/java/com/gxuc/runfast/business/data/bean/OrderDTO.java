@@ -120,8 +120,8 @@ public class OrderDTO implements Mapper<Order> {
                 order.statusName = "取消订单";
                 order.showLeftButton = true;
                 order.showRightButton = true;
-                order.leftButtonText = "同意取消";
-                order.rightButtonText = "不同意取消";
+                order.leftButtonText = "同意";
+                order.rightButtonText = "不同意";
                 break;
             case -1:
                 order.statusName = "订单已取消";
@@ -155,10 +155,31 @@ public class OrderDTO implements Mapper<Order> {
                 break;
             case 5:
                 order.statusName = "待配送员送达";
-                order.showLeftButton = false;
-                order.showRightButton = true;
-                order.rightButtonText = "打印";
-                order.isWhiteButton = true;
+//                order.isWhiteButton = true;
+                if (order.isDeliver) {
+                    order.showLeftButton = true;
+                    order.showRightButton = true;
+                    order.leftButtonText = "打印";
+                    order.rightButtonText = "已送达";
+                } else {
+                    order.showLeftButton = false;
+                    order.showRightButton = true;
+                    order.rightButtonText = "打印";
+                }
+                break;
+            case 4:
+                order.statusName = "待配送员送达";
+//                order.isWhiteButton = true;
+                if (order.isDeliver) {
+                    order.showLeftButton = true;
+                    order.showRightButton = true;
+                    order.leftButtonText = "打印";
+                    order.rightButtonText = "开始配送";
+                } else {
+                    order.showLeftButton = false;
+                    order.showRightButton = true;
+                    order.rightButtonText = "打印";
+                }
                 break;
             default:
                 order.statusName = Utils.emptyToValue(statStr, "");

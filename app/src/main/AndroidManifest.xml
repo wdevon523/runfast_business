@@ -49,39 +49,99 @@
         <activity
             android:name="com.gxuc.runfast.business.ui.MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.login.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/LoginActTheme" />
-        <activity android:name=".ui.CropperActivity" />
-        <activity android:name=".ui.operation.cash.CashApplicationActivity" />
-        <activity android:name=".ui.operation.cash.record.RecordActivity" />
-        <activity android:name=".ui.operation.message.MessageCenterActivity" />
-        <activity android:name=".ui.operation.comment.UserCommentActivity" />
-        <activity android:name=".ui.operation.comment.detail.CommentDetailActivity" />
-        <activity android:name=".ui.operation.statistics.BusinessStatisticsActivity" />
-        <activity android:name=".ui.operation.statistics.order.DayOrderActivity" />
-        <activity android:name=".ui.operation.statistics.goods.GoodsSellActivity" />
-        <activity android:name=".ui.operation.statistics.monthly.MonthlyActivity" />
-        <activity android:name=".ui.operation.goods.GoodsManageActivity" />
-        <activity android:name=".ui.operation.goods.sort.GoodsSortDetailActivity" />
-        <activity android:name=".ui.operation.goods.sort.GoodsSortActivity" />
-        <activity android:name=".ui.operation.goods.activity.ActivityListActivity" />
-        <activity android:name=".ui.operation.goods.activity.add.AddActivityActivity" />
-        <activity android:name=".ui.operation.goods.activity.detail.ActivityDetailActivity" />
-        <activity android:name=".ui.operation.goods.activity.detail.goods.GoodsListActivity" />
-        <activity android:name=".ui.operation.goods.detail.GoodsDetailActivity" />
-        <activity android:name=".ui.operation.goods.detail.sort.SelectGoodsSortActivity" />
-        <activity android:name=".ui.operation.goods.activity.add.menu.SelectGoodsActivity" />
-        <activity android:name=".ui.mine.feedback.FeedbackActivity" />
-        <activity android:name=".ui.mine.password.ChangePasswordActivity" />
-        <activity android:name=".ui.mine.about.AboutUsActivity" />
-        <activity android:name=".ui.mine.phone.BindPhoneActivity" />
-        <activity android:name=".ui.mine.shop.ShopInfoActivity" />
-        <activity android:name=".ui.mine.printer.ConnectPrinterActivity" />
-        <activity android:name=".ui.mine.printer.ChangePrinterStateActivity" />
-        <activity android:name=".ui.mine.state.ChangeBusinessStateActivity" />
-        <activity android:name=".ui.mine.archive.ArchiveActivity" />
+        <activity
+            android:name=".ui.CropperActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.cash.CashApplicationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.cash.record.RecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.message.MessageCenterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.comment.UserCommentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.comment.detail.CommentDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.statistics.BusinessStatisticsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.statistics.order.DayOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.statistics.goods.GoodsSellActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.statistics.monthly.MonthlyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.goods.GoodsManageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.goods.sort.GoodsSortDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.goods.sort.GoodsSortActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.goods.activity.ActivityListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.goods.activity.add.AddActivityActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.goods.activity.detail.ActivityDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.goods.activity.detail.goods.GoodsListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.goods.detail.GoodsDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.goods.detail.sort.SelectGoodsSortActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.operation.goods.activity.add.menu.SelectGoodsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.feedback.FeedbackActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.password.ChangePasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.about.AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.phone.BindPhoneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.shop.ShopInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.printer.ConnectPrinterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.printer.ChangePrinterStateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.state.ChangeBusinessStateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.archive.ArchiveActivity"
+            android:screenOrientation="portrait" />
 
         <receiver
             android:name=".receiver.JPushReceiver"
@@ -114,25 +174,26 @@
         <receiver android:name=".receiver.KeepAliveReceiver">
             <!--设备重启广播-->
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <!--安装或卸载广播-->
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
                 <data android:scheme="package" />
             </intent-filter>
             <!--解锁广播-->
             <intent-filter>
-                <action android:name="android.intent.action.ACTION_USER_PRESENT"/>
+                <action android:name="android.intent.action.ACTION_USER_PRESENT" />
             </intent-filter>
             <!--存储卡挂载广播-->
-            <intent-filter >
-                <action android:name="android.intent.action.MEDIA_MOUNTED"/>
-                <action android:name="android.intent.action.MEDIA_UNMOUNTED"/>
-                <data android:scheme="file">
-                </data>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
+
+                <data android:scheme="file"></data>
             </intent-filter>
             <!--网络状态广播-->
             <intent-filter>
@@ -143,52 +204,53 @@
         </receiver>
 
         <!--注册Service-->
-        <service android:name=".service.DaemonService"
+        <service
+            android:name=".service.DaemonService"
             android:enabled="true"
             android:exported="true"
-            android:process=":daemon_service"/>
+            android:process=":daemon_service" />
 
-        <service android:name=".service.CancelNoticeService"
+        <service
+            android:name=".service.CancelNoticeService"
             android:enabled="true"
             android:exported="true"
-            android:process=":service"/>
+            android:process=":service" />
         <!--<service android:name=".service.PlayerMusicService"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="true"-->
-            <!--android:process=":music_service"/>-->
+        <!--android:enabled="true"-->
+        <!--android:exported="true"-->
+        <!--android:process=":music_service"/>-->
         <service
             android:name=".service.AliveJobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <!--<service-->
-            <!--android:name=".service.GrayService"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="false"-->
-            <!--android:process=":gray" />-->
-        <!--<service-->
-            <!--android:name=".service.GrayService$GrayInnerService"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="false"-->
-            <!--android:process=":gray" />-->
-        <!--<service-->
-            <!--android:name=".receiver.WakeReceiver$WakeNotifyService"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="false" />-->
+        <service
+            android:name=".service.GrayService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":gray" />
+        <service
+            android:name=".service.GrayService$GrayInnerService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":gray" />
+        <service
+            android:name=".receiver.WakeReceiver$WakeNotifyService"
+            android:enabled="true"
+            android:exported="false" />
 
-        <!--<service-->
-            <!--android:name=".receiver.WakeReceiver$WakeGrayInnerService"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="false" />-->
+        <service
+            android:name=".receiver.WakeReceiver$WakeGrayInnerService"
+            android:enabled="true"
+            android:exported="false" />
 
-        <!--<receiver-->
-            <!--android:name=".receiver.WakeReceiver"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="false">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="com.wake.gray" />-->
-            <!--</intent-filter>-->
-        <!--</receiver>-->
-
+        <receiver
+            android:name=".receiver.WakeReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.wake.gray" />
+            </intent-filter>
+        </receiver>
 
     </application>
 </manifest>

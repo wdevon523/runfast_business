@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">跑腿快车</string>
+    <string name="app_name">跑腿快车商家版</string>
 
     <string name="add_goods_sort">新增分类</string>
 
@@ -45,4 +45,7 @@
     <string name="view">查看</string>
     <string name="update">修改</string>
     <string name="save">保存</string>
+    <string name="sale_out">已售罄</string>
+    <string name="is_putaway">已上架</string>
+    <string name="is_sold_out">已下架</string>
 </resources>

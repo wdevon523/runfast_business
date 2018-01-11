@@ -54,7 +54,7 @@
                 android:text="@{viewModel.count}"
                 android:textColor="@color/mine_shaft"
                 android:textSize="@dimen/t13"
-                app:topText="销售数量"
+                app:topText="销售单量"
                 app:topTextAppearance="@style/LabelView_11dp_aluminum"
                 tools:text="0.00"/>
 

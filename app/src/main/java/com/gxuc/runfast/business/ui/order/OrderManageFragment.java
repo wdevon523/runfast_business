@@ -16,6 +16,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.widget.Button;
 
+import com.gxuc.runfast.business.App;
 import com.gxuc.runfast.business.BuildConfig;
 import com.gxuc.runfast.business.R;
 import com.gxuc.runfast.business.databinding.FragmentOrderManageBinding;
@@ -52,6 +53,7 @@ public class OrderManageFragment extends BaseFragment<FragmentOrderManageBinding
     private String selectTabStr = "进行中";
     private boolean isResume;
     FragmentOrderManageBinding binding;
+    private boolean isHidden;
 
 
     @Override
@@ -71,6 +73,16 @@ public class OrderManageFragment extends BaseFragment<FragmentOrderManageBinding
         binding.setAdapter((mVM = findOrCreateViewModel()).getAdapter());
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (App.isFromBackGround && !isHidden){
+            onLoadData();
+            App.isFromBackGround = false;
+        }
+    }
+
+
     public void refreshNewOrder() {
         mHandler.sendEmptyMessageDelayed(1, 1000);
     }
@@ -81,8 +93,8 @@ public class OrderManageFragment extends BaseFragment<FragmentOrderManageBinding
             Log.i("devon", "msg.what= " + msg.what);
             switch (msg.what) {
                 case 1:
-                    if (TextUtils.equals("进行中", selectTabStr)) {
-                        onLoadData();
+                    if (TextUtils.equals("进行中", selectTabStr) && mVM != null) {
+                        mVM.start(getStatus(selectTabStr));
                     }
                     break;
             }
@@ -136,8 +148,7 @@ public class OrderManageFragment extends BaseFragment<FragmentOrderManageBinding
                 binding.setAdapter((mVM = findOrCreateViewModel()).getAdapter());
                 isResume = false;
                 selectTabStr = tab.getText().toString();
-                mBinding.refreshRoot.progress.showLoading();
-                mVM.start(getStatus(selectTabStr));
+                onLoadData();
             }
         });
     }
@@ -145,9 +156,9 @@ public class OrderManageFragment extends BaseFragment<FragmentOrderManageBinding
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
+        isHidden = hidden;
         if (!hidden && isResume && !TextUtils.isEmpty(selectTabStr)) {
-            mBinding.refreshRoot.progress.showLoading();
-            mVM.start(getStatus(selectTabStr));
+            onLoadData();
         }
         if (hidden) {
             isResume = true;

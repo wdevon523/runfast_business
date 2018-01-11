@@ -1,6 +1,8 @@
 package com.gxuc.runfast.business.ui.operation.goods;
 
 import android.content.Context;
+import android.databinding.ObservableField;
+import android.text.TextUtils;
 
 import com.airbnb.epoxy.EpoxyModel;
 import com.gxuc.runfast.business.ItemGoodsBindingModel_;
@@ -27,6 +29,8 @@ public class GoodsViewModel extends BaseViewModel {
 
     public final Adapter sortAdapter = new Adapter();
     public final Adapter goodsAdapter = new Adapter();
+    public final ObservableField<Integer> count = new ObservableField<>(0);
+
 
     private String status = "";
 
@@ -80,6 +84,12 @@ public class GoodsViewModel extends BaseViewModel {
     }
 
     public void manageGoodsStatus(Goods goods) {
+
+        if (goods.count == 0 && goods.status == 2) {
+            toast("请先添加商品数量，再进行上架操作");
+            return;
+        }
+
         mCallback.setLoading(true);
         mRepo.manageGoodsStatus(goods.id, goods.status)
                 .compose(RxLifecycle.bindLifecycle(this))
@@ -89,9 +99,12 @@ public class GoodsViewModel extends BaseViewModel {
                     public void onNext(BaseResponse response) {
                         if (response.success) {
                             notifyItem(goods);
-                        } else {
+                        }
+//                        else {
+                        if (!TextUtils.isEmpty(response.msg)) {
                             toast(response.msg);
                         }
+//                        }
                     }
                 });
     }

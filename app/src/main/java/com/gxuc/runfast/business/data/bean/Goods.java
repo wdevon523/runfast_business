@@ -21,7 +21,7 @@ public class Goods implements Serializable {
 
     public long sortId;
     public String sortName;
-    public String count;
+    public int count;
     public String limitCount;
     public boolean isLimited;
     public boolean needPackingCharge;

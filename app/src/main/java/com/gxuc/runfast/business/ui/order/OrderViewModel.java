@@ -92,6 +92,8 @@ public class OrderViewModel extends BaseViewModel {
         int maxPage = mRepo.getOrderPages();
         if (page < maxPage) {
             loadOrders(++page);
+        } else {
+            mLoadingCallback.onLoadMoreFinish(isLastPage(page));
         }
     }
 
@@ -122,7 +124,11 @@ public class OrderViewModel extends BaseViewModel {
                 break;
             case -1:
             case 5:
-                print(order);
+                if (order.isDeliver) {
+                    changeOrderStatus(currentOrderId, 6);
+                } else {
+                    print(order);
+                }
                 break;
             case 1:
                 receive(currentOrderId);
@@ -133,6 +139,9 @@ public class OrderViewModel extends BaseViewModel {
             case 2:
             case 3:
                 changeOrderStatus(currentOrderId, 4);
+                break;
+            case 4:
+                changeOrderStatus(currentOrderId, 5);
                 break;
         }
     }
@@ -159,10 +168,11 @@ public class OrderViewModel extends BaseViewModel {
         mRepo.loadOrders(page, status)
                 .compose(RxLifecycle.bindLifecycle(this))
                 .doFinally(() -> {
-//                    if (isFirstLoad) {
-//                        isFirstLoad = false;
+                    if (isFirstLoad) {
+                        isFirstLoad = false;
 //                        mLoadingCallback.onFirstLoadFinish();
-//                    }
+                    }
+                    mLoadingCallback.onFirstLoadFinish();
                     if (page == 1) {
                         mLoadingCallback.onRefreshFinish();
                         Log.i("devon", "--------->onRefreshFinish");
@@ -178,12 +188,9 @@ public class OrderViewModel extends BaseViewModel {
                     public void onNext(List<Order> orders) {
                         if (page == 1 && !mAdapter.isEmpty()) {
                             mAdapter.swap(generateOrderModels(orders));
-                            Log.i("devon", "--------->swap");
                         } else {
                             mAdapter.addMore(generateOrderModels(orders));
-                            Log.i("devon", "--------->addMore");
                         }
-                        Log.i("devon", "--------->onNext");
                         if (!mAdapter.isEmpty()) {
                             mAdapter.addHeader(header.status(status)
                                     .amount(mRepo.getTotalAmount())
@@ -210,7 +217,7 @@ public class OrderViewModel extends BaseViewModel {
                     .courierPhone(order.courierPhone)
                     .deliveryTime(order.deliveryTime)
                     .goodsCount(order.goodsCount)
-                    .orderTime(order.orderTime)
+                    .orderTime(order.orderTime.substring(5, order.orderTime.length()))
                     .orderNo(order.orderNo)
                     .packingCharge(order.packingCharge)
                     .hasPackingCharge(order.hasPackingCharge)
@@ -353,9 +360,8 @@ public class OrderViewModel extends BaseViewModel {
                     public void onNext(BaseResponse response) {
                         if (response.success) {
                             start();
-                        } else {
-                            toast(response.msg);
                         }
+                        toast(response.msg);
                     }
                 });
     }

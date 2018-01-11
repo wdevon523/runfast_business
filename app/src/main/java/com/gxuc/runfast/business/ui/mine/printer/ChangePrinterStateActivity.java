@@ -10,6 +10,9 @@ import com.gxuc.runfast.business.extension.NeedDataBinding;
 import com.gxuc.runfast.business.extension.WithToolbar;
 import com.gxuc.runfast.business.ui.base.BaseActivity;
 import com.gxuc.runfast.business.util.BluetoothHelper;
+import com.gxuc.runfast.business.util.PrintUtils;
+
+import java.io.OutputStream;
 
 /**
  * 设置打印机状态
@@ -52,6 +55,7 @@ public class ChangePrinterStateActivity extends BaseActivity
         if (BluetoothHelper.unbond(mDevice)) {
             intent.putExtra("success", true);
             intent.putExtra("ignore", true);
+//            PrintUtils.setOutputStream(null);
         } else {
             toast("断开失败！");
             intent.putExtra("success", false);
@@ -80,6 +84,7 @@ public class ChangePrinterStateActivity extends BaseActivity
         intent.putExtra("toPair", false);
         if (BluetoothHelper.unbond(mDevice)) {
             intent.putExtra("success", true);
+//            PrintUtils.setOutputStream(null);
         } else {
             toast("断开失败！");
             intent.putExtra("success", false);

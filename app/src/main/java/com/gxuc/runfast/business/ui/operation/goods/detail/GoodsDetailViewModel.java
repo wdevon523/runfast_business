@@ -108,7 +108,7 @@ public class GoodsDetailViewModel extends BaseViewModel {
                     startTime.set(goods.startTime);
                     endTime.set(goods.endTime);
                     needPackingCharge.set(goods.needPackingCharge);
-                    count.set(goods.count);
+                    count.set(String.valueOf(goods.count));
                     describe.set(goods.describe);
                     imagePath.set(goods.imagePath);
                     thumbnailPath.set(goods.thumbnailPath);

@@ -1,6 +1,7 @@
 package com.gxuc.runfast.business.data;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -11,6 +12,8 @@ import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.concurrent.TimeUnit;
 
 import io.paperdb.Paper;
@@ -63,7 +66,20 @@ public final class DataLayer {
 
         File cacheFile = new File(app.getCacheDir(), RESPONSE_CACHE_FILE);
 
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+//        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+            @Override
+            public void log(String message) {
+                try {
+                    message = message.replaceAll("%(?![0-9a-fA-F]{2})", "%25");
+                    message = URLDecoder.decode(message, "UTF-8");
+                    Log.d("devon", "OkHttp====Message:" + message);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
         logging.setLevel(BuildConfig.DEBUG ?
                 HttpLoggingInterceptor.Level.BODY :
                 HttpLoggingInterceptor.Level.NONE
@@ -81,7 +97,7 @@ public final class DataLayer {
         getInstance().mOkHttpClient = builder.build();
     }
 
-    private static class NetworkIntercept implements Interceptor {
+    public static class NetworkIntercept implements Interceptor {
 
         @Override
         public Response intercept(Chain chain) throws IOException {

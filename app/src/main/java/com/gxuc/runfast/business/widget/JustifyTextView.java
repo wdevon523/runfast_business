@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -140,6 +141,7 @@ public class JustifyTextView extends View {
             mPaint.setColor(mLeftTextColor);
             mPaint.setTextSize(mLeftTextSize);
             mPaint.setTextAlign(Paint.Align.LEFT);
+//            mPaint.setTypeface(Typeface.DEFAULT_BOLD);
             Paint.FontMetrics fm = mPaint.getFontMetrics();
 
             float baseline = (getHeight() - fm.ascent - fm.descent) / 2;

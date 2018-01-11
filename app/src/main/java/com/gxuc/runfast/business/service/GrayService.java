@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.gxuc.runfast.business.data.repo.LoginRepo;
 import com.gxuc.runfast.business.receiver.WakeReceiver;

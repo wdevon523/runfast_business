@@ -14,6 +14,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.widget.Button;
 
+import com.gxuc.runfast.business.App;
 import com.gxuc.runfast.business.BuildConfig;
 import com.gxuc.runfast.business.R;
 import com.gxuc.runfast.business.databinding.FragmentPendingOrderBinding;
@@ -47,6 +48,7 @@ public class PendingOrderFragment extends BaseFragment<FragmentPendingOrderBindi
     private EditTextDialog mDialog;
 
     private ProgressHelper helper;
+    private boolean isHidden;
 
     @Override
     public int thisLayoutId() {
@@ -95,9 +97,19 @@ public class PendingOrderFragment extends BaseFragment<FragmentPendingOrderBindi
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
+        isHidden = hidden;
         if (!hidden) {
             Log.i("devon", "PendingOrderFragment-----" + !hidden);
             onLoadData();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (App.isFromBackGround && !isHidden) {
+            onLoadData();
+            App.isFromBackGround = false;
         }
     }
 

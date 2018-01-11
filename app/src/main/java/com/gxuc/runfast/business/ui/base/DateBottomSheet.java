@@ -34,7 +34,8 @@ public class DateBottomSheet extends BottomSheetDialog {
 
         if (TextUtils.isEmpty(time)) return;
 
-        String[] times = time.split("-");
+//        String[] times = time.split("-");
+        String[] times = time.split("\\.");
         final WheelYearPicker yearPicker = (WheelYearPicker) findViewById(R.id.wheel_year_view);
         final WheelMonthPicker monthPicker = (WheelMonthPicker) findViewById(R.id.wheel_month_view);
         final WheelDayPicker dayPicker = (WheelDayPicker) findViewById(R.id.wheel_day_view);

@@ -9,9 +9,11 @@ import com.gxuc.runfast.business.data.bean.Business;
 import com.gxuc.runfast.business.data.repo.BusinessRepo;
 import com.gxuc.runfast.business.data.repo.LoginRepo;
 import com.gxuc.runfast.business.data.response.BaseResponse;
+import com.gxuc.runfast.business.data.response.LoginResponse;
 import com.gxuc.runfast.business.ui.base.BaseViewModel;
 import com.gxuc.runfast.business.util.ResponseSubscriber;
 import com.gxuc.runfast.business.util.RxLifecycle;
+import com.gxuc.runfast.business.util.SystemUtils;
 
 public class MineViewModel extends BaseViewModel {
 
@@ -31,10 +33,12 @@ public class MineViewModel extends BaseViewModel {
 
     private final ObservableField<Business> mBusinessObservable = new ObservableField<>();
 
+    private Context context;
     private MineNavigator mNavigator;
 
     MineViewModel(Context context, MineNavigator navigator) {
         super(context);
+        this.context = context;
         mNavigator = navigator;
     }
 
@@ -69,8 +73,21 @@ public class MineViewModel extends BaseViewModel {
     }
 
     public void logout() {
-        mLoginRepo.logout();
-        mNavigator.onLogoutSuccess();
+        mLoginRepo.logout(SystemUtils.getIMEI(context))
+                .compose(RxLifecycle.<LoginResponse>bindLifecycle(this))
+                .subscribe(new ResponseSubscriber<LoginResponse>(mContext) {
+                    @Override
+                    public void onNext(LoginResponse response) {
+                        if (response.success) {
+                            mLoginRepo.successLogout();
+                            mNavigator.onLogoutSuccess();
+                            toast("退出成功");
+                            return;
+                        }
+                        toast(response.msg);
+                    }
+                });
+
     }
 
     void changeShopName(String name) {

@@ -8,8 +8,9 @@ android {
         applicationId "com.gxuc.runfast.business"
         minSdkVersion 17
         targetSdkVersion 26
-        versionCode 40
-        versionName "2.0.1"
+        versionCode 44
+        versionName "2.0.6"
+        multiDexEnabled true
         manifestPlaceholders = [
                 JPUSH_PKGNAME: "com.gxuc.runfast.business",
                 JPUSH_APPKEY : "c94ba5202ef88b506181459f",
@@ -66,7 +67,8 @@ dependencies {
     compile 'com.github.Berial:progress-activity:latest.release'
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
     compile 'cn.aigestudio.wheelpicker:WheelPicker:latest.release'
-    compile 'com.zhihu.android:matisse:latest.release'
+//    compile 'com.zhihu.android:matisse:latest.release'
+    compile 'com.zhihu.android:matisse:0.5.0-beta1'
     compile 'com.steelkiwi:cropiwa:latest.release'
 
     compile 'com.tencent.bugly:crashreport:latest.release'
@@ -94,6 +96,12 @@ dependencies {
     }
     annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
 
-    compile 'cn.jiguang.sdk:jpush:latest.release'
-    compile 'cn.jiguang.sdk:jcore:latest.release'
+//    compile 'cn.jiguang.sdk:jpush:latest.release'
+//    compile 'cn.jiguang.sdk:jcore:latest.release'
+    compile 'cn.jiguang.sdk:jpush:3.0.6'
+    compile 'cn.jiguang.sdk:jcore:1.1.6'
+    compile 'com.android.support:multidex:1.0.1'
+
+    compile 'io.reactivex:rxjava:1.1.5'
+    compile 'io.reactivex:rxandroid:1.2.0'
 }

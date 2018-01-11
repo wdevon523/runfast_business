@@ -54,7 +54,7 @@ public class GoodsDTO implements Mapper<Goods> {
         goods.needFullPrice = limittype != null && limittype == 1;
         goods.needPackingCharge = ptype != null && ptype == 0;
         goods.limitCount = String.valueOf(limitNum == null ? 0 : limitNum);
-        goods.count = String.valueOf(num == null ? 0 : num);
+        goods.count = num == null ? 0 : num;
 
         goods.standardId = gid;
         goods.standardName = sname;

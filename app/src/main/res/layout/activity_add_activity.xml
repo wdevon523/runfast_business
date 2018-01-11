@@ -71,7 +71,7 @@
 
             <com.gxuc.runfast.business.widget.LabelView
                 style="@style/AddActivityLabelViewStyle"
-                android:text="请选择菜单"
+                android:text="@={viewModel.choose}"
                 android:textColor="@color/iron"
                 android:onClick="@{() -> viewModel.selectGoods()}"
                 android:visibility="@{viewModel.type >= 2 &amp;&amp; viewModel.type &lt;= 4 ? View.VISIBLE : View.GONE}"

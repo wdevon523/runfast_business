@@ -10,7 +10,7 @@ import com.gxuc.runfast.business.ui.base.BaseActivity;
 import com.gxuc.runfast.business.util.ProgressHelper;
 
 /**
- * 意见反馈
+ * 商家回复
  * Created by Berial on 2017/8/20.
  */
 public class CommentDetailActivity extends BaseActivity
@@ -30,7 +30,7 @@ public class CommentDetailActivity extends BaseActivity
 
     @Override
     public String thisTitle() {
-        return "意见反馈";
+        return "商家回复";
     }
 
     @Override

@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.9"
             android:gravity="center_horizontal"
-            android:text="销售数量"
+            android:text="销售单量"
             android:textColor="@color/mine_shaft"
             android:textSize="@dimen/t12"/>
 

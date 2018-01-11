@@ -17,7 +17,10 @@ import android.text.TextUtils;
 import com.google.gson.annotations.SerializedName;
 import com.gxuc.runfast.business.R;
 import com.gxuc.runfast.business.data.DataLayer;
+import com.gxuc.runfast.business.data.repo.BusinessRepo;
 import com.gxuc.runfast.business.ui.MainActivity;
+
+import java.io.Serializable;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -77,28 +80,33 @@ public class JPushReceiver extends BroadcastReceiver {
             String sound = message.sound;
             if (TextUtils.isEmpty(sound)) return;
             if (NEW_ORDER.equals(sound)) {
-                notification.setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.neworder));
+                if (BusinessRepo.get().isAutomatic()) {
+                    notification.setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.newordertwice));
+                } else {
+                    notification.setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.neworder));
+                }
             } else if (NEW_CANCEL.equals(sound)) {
                 notification.setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.newcancel));
             } else {
                 notification.setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.default_sound));
             }
+
+
+            Notification build = notification.build();
+
+            NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.notify(NOTIFICATION_SHOW_SHOW_AT_MOST, build);  //id随意，正好使用定义的常量做id，0除外，0为默认的Notification
+
+            sendMsg(context, sound);
         }
-
-        Notification build = notification.build();
-
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(NOTIFICATION_SHOW_SHOW_AT_MOST, build);  //id随意，正好使用定义的常量做id，0除外，0为默认的Notification
-
-        sendMsg(context);
     }
 
-    private void sendMsg(Context context) {
+    private void sendMsg(Context context, String sound) {
         Intent msgIntent = new Intent(MESSAGE_RECEIVED_ACTION);
         context.sendBroadcast(msgIntent);
 
         Intent Intent = new Intent(MainActivity.MESSAGE_RECEIVED_ACTION);
-//        msgIntent.putExtra(MainActivity.KEY_MESSAGE, message);
+        Intent.putExtra(MainActivity.KEY_MESSAGE, sound);
 
         LocalBroadcastManager.getInstance(context).sendBroadcast(Intent);
     }

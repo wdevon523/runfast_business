@@ -33,7 +33,7 @@ public class DayOrderActivity extends BaseActivity
 
     @Override
     public String thisTitle() {
-        return "当日订单清单";
+        return "订单清单";
     }
 
     @Override

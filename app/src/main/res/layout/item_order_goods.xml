@@ -28,16 +28,16 @@
             android:layout_width="225dp"
             android:layout_height="wrap_content"
             android:text="@{name}"
-            android:textColor="@color/gray19"
-            android:textSize="@dimen/t11"
+            android:textColor="@color/mine_shaft"
+            android:textSize="@dimen/t12"
             tools:text="美式香芋派"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{`x` + count}"
-            android:textColor="@color/gray19"
-            android:textSize="@dimen/t11"
+            android:textColor="@color/mine_shaft"
+            android:textSize="@dimen/t12"
             tools:text="x1"/>
 
         <Space
@@ -49,8 +49,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{@string/yuan + price}"
-            android:textColor="@color/gray19"
-            android:textSize="@dimen/t11"
+            android:textColor="@color/mine_shaft"
+            android:textSize="@dimen/t12"
             tools:text="￥2"/>
     </LinearLayout>
 </layout>

@@ -70,39 +70,40 @@
             android:layout_height="10dp"
             android:background="@color/anti_flash_white"/>
 
+
+        <TextView
+        style="@style/MineItemStyle"
+        android:onClick="@{()->view.toConnectPrinter()}"
+        android:text="设置打印机"/>
+
+        <include layout="@layout/divider"/>
+
+        <TextView
+        style="@style/MineItemStyle"
+        android:onClick="@{()->view.toArchive()}"
+        android:text="食品安全档案"/>
+
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/anti_flash_white"/>
+
         <TextView
             style="@style/MineItemStyle"
             android:onClick="@{()->view.toFeedback()}"
-            android:text="意见反馈"/>
+            android:text="意见反馈" />
 
-        <include layout="@layout/divider"/>
+        <include layout="@layout/divider" />
 
         <TextView
             style="@style/MineItemStyle"
             android:onClick="@{()->view.toAboutUs()}"
-            android:text="关于我们"/>
+            android:text="关于" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/anti_flash_white"/>
-
-        <TextView
-            style="@style/MineItemStyle"
-            android:onClick="@{()->view.toConnectPrinter()}"
-            android:text="设置打印机"/>
-
-        <include layout="@layout/divider"/>
-
-        <TextView
-            style="@style/MineItemStyle"
-            android:onClick="@{()->view.toArchive()}"
-            android:text="食品安全档案"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/anti_flash_white"/>
+            android:background="@color/anti_flash_white" />
 
         <TextView
             android:layout_width="match_parent"

@@ -48,4 +48,7 @@
     <color name="gray22">#de000000</color>
     <color name="text_333333">#333333</color>
     <color name="text_999999">#999999</color>
+    <color name="text_fb7d30">#fb7d30</color>
+    <color name="bg_80ffffff">#80ffffff</color>
+    <color name="bg_7f000000">#7f000000</color>
 </resources>
