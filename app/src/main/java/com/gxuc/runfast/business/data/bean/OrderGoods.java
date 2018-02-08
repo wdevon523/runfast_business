@@ -13,4 +13,7 @@ public class OrderGoods {
     public String remark;
     public String standard;
     public String option;
+    public int activityType;
+    public String goodsAct;
+//    public String activityName;
 }

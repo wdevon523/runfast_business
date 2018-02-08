@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
         <variable
             name="view"
-            type="com.gxuc.runfast.business.ui.mine.MineFragment"/>
+            type="com.gxuc.runfast.business.ui.mine.MineFragment" />
 
         <variable
             name="viewModel"
-            type="com.gxuc.runfast.business.ui.mine.MineViewModel"/>
+            type="com.gxuc.runfast.business.ui.mine.MineViewModel" />
     </data>
 
     <RelativeLayout
@@ -31,7 +30,7 @@
             android:layout_marginLeft="@dimen/m10"
             android:layout_marginRight="@dimen/m10"
             app:circleImageUrl="@{viewModel.logoUrl}"
-            tools:background="@color/white"/>
+            tools:background="@color/white" />
 
         <TextView
             android:id="@+id/tv"
@@ -48,7 +47,7 @@
             android:text="@{viewModel.statusName}"
             android:textColor="@color/white"
             android:textSize="@dimen/t11"
-            tools:text="营业"/>
+            tools:text="营业" />
 
         <TextView
             android:id="@+id/tv_shop_name"
@@ -59,7 +58,7 @@
             android:onClick="@{() -> view.showChangeShopNameDialog()}"
             android:text="@{viewModel.name}"
             android:textColor="@color/white"
-            tools:text="卡乐滋"/>
+            tools:text="卡乐滋" />
         <!--android:drawableRight="@drawable/ic_right_arrow_white"-->
 
         <LinearLayout
@@ -77,35 +76,35 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/m3"
                 android:src="@drawable/activity_jian"
-                android:visibility="@{viewModel.activities.contains(`1`) ? View.VISIBLE : View.GONE}"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:visibility="@{viewModel.activities.contains(`2`) ? View.VISIBLE : View.GONE}"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/m3"
-                android:src="@drawable/activity_zhe"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:visibility="@{viewModel.activities.contains(`3`) ? View.VISIBLE : View.GONE}"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/m3"
-                android:src="@drawable/activity_zeng"/>
+                android:visibility="@{viewModel.activities.contains(`1`) ? View.VISIBLE : View.GONE}" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.activities.contains(`4`) ? View.VISIBLE : View.GONE}"
                 android:layout_marginRight="@dimen/m3"
-                android:src="@drawable/activity_te"/>
+                android:src="@drawable/activity_zhe"
+                android:visibility="@{viewModel.activities.contains(`2`) ? View.VISIBLE : View.GONE}" />
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:visibility="@{viewModel.activities.contains(`5`) ? View.VISIBLE : View.GONE}"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/m3"
-                android:src="@drawable/activity_mian"/>
+                android:src="@drawable/activity_zeng"
+                android:visibility="@{viewModel.activities.contains(`3`) ? View.VISIBLE : View.GONE}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/m3"
+                android:src="@drawable/activity_te"
+                android:visibility="@{viewModel.activities.contains(`4`) ? View.VISIBLE : View.GONE}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/m3"
+                android:src="@drawable/activity_mian"
+                android:visibility="@{viewModel.activities.contains(`5`) ? View.VISIBLE : View.GONE}" />
         </LinearLayout>
     </RelativeLayout>
 </layout>

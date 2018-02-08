@@ -172,7 +172,7 @@ public class OrderViewModel extends BaseViewModel {
                         isFirstLoad = false;
 //                        mLoadingCallback.onFirstLoadFinish();
                     }
-                    mLoadingCallback.onFirstLoadFinish();
+//                    mLoadingCallback.onFirstLoadFinish();
                     if (page == 1) {
                         mLoadingCallback.onRefreshFinish();
                         Log.i("devon", "--------->onRefreshFinish");
@@ -253,10 +253,14 @@ public class OrderViewModel extends BaseViewModel {
         ArrayList<ItemOrderGoodsBindingModel_> models = new ArrayList<>();
         for (OrderGoods item : goods) {
             models.add(new ItemOrderGoodsBindingModel_()
-                    .id(item.id)
-                    .name(item.name + item.standard + item.option)
-                    .count(item.count)
-                    .price(item.price));
+                            .id(item.id)
+                            .name(item.name + item.standard + item.option)
+                            .count(item.count)
+                            .price(item.price)
+                            .goodsAct(item.goodsAct)
+                            .activityType(item.activityType)
+//                    .activityName(item.activityName)
+            );
         }
         return models;
     }

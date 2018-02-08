@@ -1,13 +1,16 @@
 package com.gxuc.runfast.business.data;
 
 import android.app.Application;
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.internal.LinkedTreeMap;
+import com.gxuc.runfast.business.App;
 import com.gxuc.runfast.business.BuildConfig;
 import com.gxuc.runfast.business.data.response.BaseResponse;
+import com.gxuc.runfast.business.ui.login.LoginActivity;
 import com.orhanobut.logger.Logger;
 
 import java.io.File;
@@ -43,7 +46,8 @@ public final class DataLayer {
 
     private OkHttpClient mOkHttpClient;
 
-    private DataLayer() {}
+    private DataLayer() {
+    }
 
     public static DataLayer getInstance() {
         return DataLayerHolder.INSTANCE;
@@ -109,6 +113,7 @@ public final class DataLayer {
             if (body != null) {
                 json = body.string();
             }
+//            App.getContext().startActivity(new Intent(App.getContext(), LoginActivity.class));
             json = json.replace("{\"relogin\":1}", "");
 
             try {

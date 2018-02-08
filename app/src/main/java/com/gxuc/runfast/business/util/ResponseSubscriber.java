@@ -1,6 +1,7 @@
 package com.gxuc.runfast.business.util;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.JsonSyntaxException;
@@ -37,10 +38,13 @@ public abstract class ResponseSubscriber<T> implements Observer<T> {
     }
 
     @Override
-    public void onNext(T t) {}
+    public void onNext(T t) {
+
+    }
 
     @Override
-    public void onComplete() {}
+    public void onComplete() {
+    }
 
     @Override
     public void onError(Throwable e) {

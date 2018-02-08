@@ -6,10 +6,12 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.widget.TextView;
 
+import com.airbnb.epoxy.EpoxyModel;
 import com.gxuc.runfast.business.ItemActivityBindingModel_;
 import com.gxuc.runfast.business.R;
 import com.gxuc.runfast.business.data.bean.Activity;
 import com.gxuc.runfast.business.data.repo.OperationRepo;
+import com.gxuc.runfast.business.data.response.BaseResponse;
 import com.gxuc.runfast.business.epoxy.Adapter;
 import com.gxuc.runfast.business.extension.LoadingCallback;
 import com.gxuc.runfast.business.ui.base.BaseViewModel;
@@ -59,16 +61,24 @@ public class ActivityListViewModel extends BaseViewModel {
         mRepo.loadActivities(page)
                 .compose(RxLifecycle.bindLifecycle(this))
                 .doFinally(() -> {
-                    if (page == 1) mCallback.onRefreshFinish();
                     if (isFirstLoad) {
                         isFirstLoad = false;
-                        if (mAdapter.isEmpty()) {
-                            mCallback.onLoadEmpty("暂时没有活动!");
-                        } else {
-                            mCallback.onFirstLoadFinish();
-                        }
+//                        mCallback.onFirstLoadFinish();
                     }
-                    mCallback.onLoadMoreFinish(isLastPage(page));
+                    if (page == 1) {
+                        mCallback.onRefreshFinish();
+                    } else {
+                        mCallback.onLoadMoreFinish(isLastPage(page));
+                    }
+
+                    if (mAdapter.isEmpty()) {
+                        mCallback.onLoadEmpty("暂时没有活动!");
+                    }
+//                    else {
+//                        mCallback.onFirstLoadFinish();
+//                    }
+
+//                    mCallback.onLoadMoreFinish(isLastPage(page));
                 })
                 .subscribe(new ResponseSubscriber<List<Activity>>(mContext) {
                     @Override
@@ -100,6 +110,35 @@ public class ActivityListViewModel extends BaseViewModel {
         mNavigator.viewActivityDetail(activity);
     }
 
+    public void deleteActivity(Activity activity) {
+        mRepo.deleteActivity(activity.id)
+                .compose(RxLifecycle.bindLifecycle(this))
+                .doFinally(() -> mCallback.onRefreshFinish())
+                .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
+                    @Override
+                    public void onNext(BaseResponse response) {
+//                        if (response.success || "操作成功！".equals(response.msg)) {
+//                            status.set(status.get() % 2 + 1);
+//                            statusName.set("恢复活动".equals(statusName.get()) ? "暂停活动" : "恢复活动");
+//                            mNavigator.changeActivityStatusSuccess();
+//                        }
+
+                        if (response.success) {
+                            List<EpoxyModel<?>> models = mAdapter.getModels();
+                            for (EpoxyModel<?> model : models) {
+                                ItemActivityBindingModel_ m = (ItemActivityBindingModel_) model;
+                                if (m.activity().id == activity.id) {
+                                    mAdapter.removeModel(m);
+                                    break;
+                                }
+                            }
+                        } else {
+                            toast("删除失败");
+                        }
+                    }
+                });
+    }
+
     @BindingAdapter("activityType")
     public static void setActivityType(TextView view, int type) {
         Context context = view.getContext();
@@ -107,10 +146,10 @@ public class ActivityListViewModel extends BaseViewModel {
         // @formatter:off
         Drawable drawable = ContextCompat.getDrawable(context,
                 type == 1 ? R.drawable.activity_jian
-            :   type == 2 ? R.drawable.activity_zhe
-            :   type == 3 ? R.drawable.activity_zeng
-            :   type == 4 ? R.drawable.activity_te
-                          : R.drawable.activity_mian
+                        : type == 2 ? R.drawable.activity_zhe
+                        : type == 3 ? R.drawable.activity_zeng
+                        : type == 4 ? R.drawable.activity_te
+                        : R.drawable.activity_mian
         ); // @formatter:on
 
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());

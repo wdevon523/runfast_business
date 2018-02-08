@@ -113,6 +113,7 @@ public class ActivityListActivity extends BaseActivity
 
     @Override
     public void onRefreshFinish() {
+        mBinding.refreshRoot.progress.showContent();
         mBinding.refreshRoot.refresh.finishRefresh();
         mBinding.refreshRoot.refresh.setEnableLoadmore(true);
     }

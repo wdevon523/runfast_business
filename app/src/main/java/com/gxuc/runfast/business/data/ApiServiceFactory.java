@@ -11,9 +11,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public final class ApiServiceFactory {
 
-    public static final String HOST = "http://www.gxptkc.com"; // 正式服
+    //    public static final String HOST = "http://www.gxptkc.com"; // 正式服
 //        public static final String HOST = "http://120.77.70.27"; // 测试服
-//    public static final String HOST = "http://192.168.2.221:8080/runfast"; // 测试服
+    public static final String HOST = "http://192.168.2.221:8080/runfast"; // 测试服
 
     private static final String BASE_URL = HOST + "/business1/";
 

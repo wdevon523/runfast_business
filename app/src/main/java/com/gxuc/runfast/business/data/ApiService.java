@@ -268,6 +268,12 @@ public interface ApiService {
     );
 
     @FormUrlEncoded
+    @POST("goodsSell/delete.do")
+    Observable<BaseResponse> deleteGood(
+            @Field("id") long goodsId
+    );
+
+    @FormUrlEncoded
     @POST("goodsSell/addtype.do")
     Observable<BaseResponse> addGoodsSort(
             @Field("baId") long businessId,
@@ -336,9 +342,25 @@ public interface ApiService {
     );
 
     @FormUrlEncoded
+    @POST("activity/delete.do")
+    Observable<BaseResponse> deleteActivity(
+            @Field("baId") long id,
+            @Field("id") long activityId
+    );
+
+    @FormUrlEncoded
     @POST("activity/getgoodsellview.do")
     Observable<LoadActivityGoodsResponse> loadActivityGoodsForSpecialOffer(
             @Field("baId") long id,
+            @Field("page") int page,
+            @Field("rows") int size
+    );
+
+    @FormUrlEncoded
+    @POST("activity/activitydetail.do")
+    Observable<LoadActivityGoodsResponse> loadActivityGoodsForSpecial(
+            @Field("id") String id,
+            @Field("baId") long baId,
             @Field("page") int page,
             @Field("rows") int size
     );

@@ -216,6 +216,12 @@ public class OperationRepo {
                 .subscribeOn(Schedulers.io());
     }
 
+    public Observable<BaseResponse> deleteGood(long goodsId) {
+        return getApi().deleteGood(goodsId)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io());
+    }
+
     public Observable<List<Comment>> loadComments(int page) {
         if (commentPages != -1 && page > commentPages) {
             return Observable.just(Collections.<Comment>emptyList());
@@ -262,6 +268,7 @@ public class OperationRepo {
         Observable<LoadActivityGoodsResponse> ob;
         if (type == 4) {
             ob = getApi().loadActivityGoodsForSpecialOffer(getId(), page, 10);
+//            ob = getApi().loadActivityGoodsForSpecial(id,  getId(), page, 10);
         } else {
             ob = getApi().loadActivityGoods(getId(), page, 10);
         }
@@ -283,6 +290,12 @@ public class OperationRepo {
 
     public Observable<BaseResponse> changeActivityStatus(long activityId) {
         return getApi().changeActivityStatus(getId(), activityId)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io());
+    }
+
+    public Observable<BaseResponse> deleteActivity(long activityId) {
+        return getApi().deleteActivity(getId(), activityId)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io());
     }

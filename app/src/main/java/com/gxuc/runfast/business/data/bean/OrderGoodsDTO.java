@@ -14,6 +14,9 @@ public class OrderGoodsDTO implements Mapper<OrderGoods> {
     public long id;
     public String goodsSellName;
     public Integer num;
+    public Integer activityType;
+    public String goods;
+    public String activityName;
     public Double totalprice;
     public String showoption;
     public String goodsSellStandardName;
@@ -21,21 +24,24 @@ public class OrderGoodsDTO implements Mapper<OrderGoods> {
 
     @Override
     public OrderGoods map() {
-        OrderGoods goods = new OrderGoods();
-        goods.id = id;
-        goods.name = goodsSellName;
-        goods.count = num != null ? String.valueOf(num) : "0";
-        goods.price = Utils.formatFloorNumber(totalprice != null ? totalprice : 0, 2, true);
-        goods.remark = Utils.emptyToValue(showoption, "");
+        OrderGoods good = new OrderGoods();
+        good.id = id;
+        good.name = goodsSellName;
+        good.count = num != null ? String.valueOf(num) : "0";
+        good.price = Utils.formatFloorNumber(totalprice != null ? totalprice : 0, 2, true);
+        good.remark = Utils.emptyToValue(showoption, "");
 
-        goods.standard = TextUtils.isEmpty(goodsSellStandardName) ? "" :
+        good.standard = TextUtils.isEmpty(goodsSellStandardName) ? "" :
                 "(" + goodsSellStandardName + ")";
 
-        goods.option = TextUtils.isEmpty(goodsSellOptionName) ? "" :
+        good.option = TextUtils.isEmpty(goodsSellOptionName) ? "" :
                 "(" +
                         (goodsSellOptionName.endsWith(";") ? goodsSellOptionName.replace(";", "")
                                 : goodsSellOptionName)
                         + ")";
-        return goods;
+        good.activityType = activityType == null ? 0 : activityType;
+        good.goodsAct = goods;
+//        good.activityName = activityName;
+        return good;
     }
 }

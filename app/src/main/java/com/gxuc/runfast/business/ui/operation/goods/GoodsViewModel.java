@@ -83,6 +83,29 @@ public class GoodsViewModel extends BaseViewModel {
         mNavigator.viewGoodsDetail(goodsId);
     }
 
+    public void deleteGood(long goodsId) {
+        mRepo.deleteGood(goodsId)
+                .compose(RxLifecycle.bindLifecycle(this))
+                .doFinally(() -> mCallback.setLoading(false))
+                .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
+                    @Override
+                    public void onNext(BaseResponse response) {
+                        if (response.success) {
+                            List<EpoxyModel<?>> models = goodsAdapter.getModels();
+                            for (EpoxyModel<?> model : models) {
+                                ItemGoodsBindingModel_ m = (ItemGoodsBindingModel_) model;
+                                if (m.id() == goodsId) {
+                                    goodsAdapter.removeModel(m);
+                                    break;
+                                }
+                            }
+                        } else {
+                            toast("删除失败");
+                        }
+                    }
+                });
+    }
+
     public void manageGoodsStatus(Goods goods) {
 
         if (goods.count == 0 && goods.status == 2) {

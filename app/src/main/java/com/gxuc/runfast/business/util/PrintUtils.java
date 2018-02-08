@@ -297,6 +297,9 @@ public class PrintUtils {
                 if (!TextUtils.isEmpty(g.remark)) {
                     PrintUtils.printText("其他要求:" + g.remark + "\n");
                 }
+                if (g.activityType == 3 && !TextUtils.isEmpty(g.goodsAct)){
+                    PrintUtils.printText("赠品: " + g.goodsAct + "\n");
+                }
             }
         }
         PrintUtils.selectCommand(PrintUtils.NORMAL);
