@@ -65,7 +65,7 @@ public class MineViewModel extends BaseViewModel {
                 .compose(RxLifecycle.bindLifecycle(this))
                 .subscribe(new ResponseSubscriber<Business>(mContext) {
                     @Override
-                    public void onNext(Business business) {
+                    public void onSuccess(Business business) {
                         mRepo.savePhone(business.phone);
                         mBusinessObservable.set(business);
                     }
@@ -77,7 +77,7 @@ public class MineViewModel extends BaseViewModel {
                 .compose(RxLifecycle.<LoginResponse>bindLifecycle(this))
                 .subscribe(new ResponseSubscriber<LoginResponse>(mContext) {
                     @Override
-                    public void onNext(LoginResponse response) {
+                    public void onSuccess(LoginResponse response) {
                         if (response.success) {
                             mLoginRepo.successLogout();
                             mNavigator.onLogoutSuccess();
@@ -95,7 +95,7 @@ public class MineViewModel extends BaseViewModel {
                 .compose(RxLifecycle.bindLifecycle(this))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success) {
                             start();
                         } else {

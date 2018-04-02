@@ -65,7 +65,7 @@ public class CommentViewModel extends BaseViewModel {
                 })
                 .subscribe(new ResponseSubscriber<List<Comment>>(mContext) {
                     @Override
-                    public void onNext(List<Comment> comments) {
+                    public void onSuccess(List<Comment> comments) {
                         if (page == 1 && !mAdapter.isEmpty()) {
                             mAdapter.swap(generateCommentModels(comments));
                         } else {

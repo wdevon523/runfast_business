@@ -54,13 +54,13 @@ public class AutoReceiveOrderReceiver extends BroadcastReceiver {
                 .take(1)
                 .subscribe(new ResponseSubscriber<Order>(context) {
                     @Override
-                    public void onNext(Order order) {
+                    public void onSuccess(Order order) {
                         if (!mRepo.contains(order.id)) {
                             mRepo.saveOrder(order.id);
                             mRepo.receive(order.id)
                                     .subscribe(new ResponseSubscriber<BaseResponse>(context) {
                                         @Override
-                                        public void onNext(BaseResponse response) {
+                                        public void onSuccess(BaseResponse response) {
                                             if (response.success) {
                                                 EventBus.getDefault().post(new RefreshOrderEvent());
                                                 print(context, order);

@@ -107,7 +107,7 @@ public class GoodsSellViewModel extends BaseViewModel {
                 })
                 .subscribe(new ResponseSubscriber<List<GoodsSell>>(mContext) {
                     @Override
-                    public void onNext(List<GoodsSell> list) {
+                    public void onSuccess(List<GoodsSell> list) {
                         if (page == 1 && !adapter.isEmpty()) {
                             adapter.swap(generateGoodsSellModels(list));
                         } else {

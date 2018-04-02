@@ -129,7 +129,7 @@ public class GoodsDetailViewModel extends BaseViewModel {
                 .doFinally(() -> mLoadingCallback.onFirstLoadFinish())
                 .subscribe(new ResponseSubscriber<Goods>(mContext) {
                     @Override
-                    public void onNext(Goods goods) {
+                    public void onSuccess(Goods goods) {
                         mGoodsObservable.set(goods);
                     }
                 });
@@ -259,7 +259,7 @@ public class GoodsDetailViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success) {
                             mNavigator.onSuccess();
                         }
@@ -278,7 +278,7 @@ public class GoodsDetailViewModel extends BaseViewModel {
                     .doFinally(() -> mCallback.setLoading(false))
                     .subscribe(new ResponseSubscriber<UploadFileResponse>(mContext) {
                         @Override
-                        public void onNext(UploadFileResponse response) {
+                        public void onSuccess(UploadFileResponse response) {
                             if (response.success) {
                                 imagePath.set(response.filePath);
                                 thumbnailPath.set(response.thumbnailPath);

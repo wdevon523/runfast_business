@@ -1,11 +1,16 @@
 package com.gxuc.runfast.business.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.JsonSyntaxException;
+import com.gxuc.runfast.business.ui.login.LoginActivity;
 import com.orhanobut.logger.Logger;
+
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 
 import java.net.ConnectException;
 import java.net.SocketException;
@@ -37,10 +42,15 @@ public abstract class ResponseSubscriber<T> implements Observer<T> {
         }
     }
 
+
     @Override
     public void onNext(T t) {
-
+//        toast("xxxxx: " + t.toString());
+//        Log.d("devon", "xxxxx: " + t.toString());
+        onSuccess(t);
     }
+
+    public abstract void onSuccess(T t);
 
     @Override
     public void onComplete() {
@@ -53,7 +63,14 @@ public abstract class ResponseSubscriber<T> implements Observer<T> {
         } else if (e instanceof SocketTimeoutException) {
             toast("网络请求超时，请检查网络状态");
         } else if (e instanceof JsonSyntaxException) {
-            toast("服务器数据异常，请稍候重试");
+            String message = e.getMessage();
+            if (message.contains("relogin")) {
+                Intent intent = new Intent(mContext, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intent);
+            } else {
+                toast("服务器数据异常，请稍候重试");
+            }
         } else if (e instanceof UnknownHostException) {
             toast("当前网络不可用，请检查网络情况");
         } else if (e instanceof HttpException) {

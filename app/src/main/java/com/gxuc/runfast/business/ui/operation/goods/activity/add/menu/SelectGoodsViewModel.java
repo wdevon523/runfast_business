@@ -106,7 +106,7 @@ public class SelectGoodsViewModel extends BaseViewModel {
                 })
                 .subscribe(new ResponseSubscriber<List<Goods>>(mContext) {
                     @Override
-                    public void onNext(List<Goods> goods) {
+                    public void onSuccess(List<Goods> goods) {
                         if (page == 1 && !mAdapter.isEmpty()) {
                             mAdapter.swap(generateActivityGoodsModels(goods));
                         } else {

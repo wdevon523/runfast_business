@@ -43,7 +43,7 @@ public class AboutUsViewModel extends BaseViewModel {
                 .compose(RxLifecycle.<UpdateAppResponse>bindLifecycle(this))
                 .subscribe(new ResponseSubscriber<UpdateAppResponse>(mContext) {
                     @Override
-                    public void onNext(UpdateAppResponse response) {
+                    public void onSuccess(UpdateAppResponse response) {
                         if (response.success && response.update) {
                             mNavigator.onUpdateApp(response.msg, response.downloadUrl);
                         } else {

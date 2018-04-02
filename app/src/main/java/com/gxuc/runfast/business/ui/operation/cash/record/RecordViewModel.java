@@ -87,7 +87,7 @@ class RecordViewModel extends BaseViewModel {
                 })
                 .subscribe(new ResponseSubscriber<List<IncomeRecord>>(mContext) {
                     @Override
-                    public void onNext(List<IncomeRecord> records) {
+                    public void onSuccess(List<IncomeRecord> records) {
                         if (page == 1 && !mAdapter.isEmpty()) {
                             mAdapter.swap(generateIncomeRecordModels(records));
                         } else {
@@ -121,7 +121,7 @@ class RecordViewModel extends BaseViewModel {
                 })
                 .subscribe(new ResponseSubscriber<List<CashRecord>>(mContext) {
                     @Override
-                    public void onNext(List<CashRecord> records) {
+                    public void onSuccess(List<CashRecord> records) {
                         if (page == 1 && !mAdapter.isEmpty()) {
                             mAdapter.swap(generateCashRecordModels(records));
                         } else {

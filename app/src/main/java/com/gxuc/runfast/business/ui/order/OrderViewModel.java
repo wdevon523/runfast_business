@@ -185,7 +185,7 @@ public class OrderViewModel extends BaseViewModel {
                 })
                 .subscribe(new ResponseSubscriber<List<Order>>(mContext) {
                     @Override
-                    public void onNext(List<Order> orders) {
+                    public void onSuccess(List<Order> orders) {
                         if (page == 1 && !mAdapter.isEmpty()) {
                             mAdapter.swap(generateOrderModels(orders));
                         } else {
@@ -276,7 +276,7 @@ public class OrderViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success) {
                             start();
                         } else {
@@ -293,7 +293,7 @@ public class OrderViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success) {
                             start();
                         } else {
@@ -310,7 +310,7 @@ public class OrderViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success) {
                             start();
                         } else {
@@ -327,7 +327,7 @@ public class OrderViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success) {
                             start();
                         } else {
@@ -344,7 +344,7 @@ public class OrderViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success) {
                             start();
                         } else {
@@ -361,7 +361,7 @@ public class OrderViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success) {
                             start();
                         }

@@ -94,7 +94,7 @@ public final class DataLayer {
                 .connectTimeout(HTTP_CONNECT_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(HTTP_WRITE_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(HTTP_READ_TIMEOUT, TimeUnit.SECONDS)
-//                .cookieJar(new CookieStore())
+                .cookieJar(new CookieManger(app.getApplicationContext()))
                 .addInterceptor(new NetworkIntercept())
                 .addInterceptor(logging);
 
@@ -113,15 +113,17 @@ public final class DataLayer {
             if (body != null) {
                 json = body.string();
             }
-//            App.getContext().startActivity(new Intent(App.getContext(), LoginActivity.class));
-            json = json.replace("{\"relogin\":1}", "");
-
-            try {
-                getGson().fromJson(json, LinkedTreeMap.class);
-                Logger.json(json);
-            } catch (JsonSyntaxException e) {
-                json = new BaseResponse().toString();
+            if (json.contains("relogin")){
+                throw new JsonSyntaxException("relogin");
             }
+//            json = json.replace("{\"relogin\":1}", "");
+//
+//            try {
+//                getGson().fromJson(json, LinkedTreeMap.class);
+//                Logger.json(json);
+//            } catch (JsonSyntaxException e) {
+//                json = new BaseResponse().toString();
+//            }
 
             return response.newBuilder()
                     .body(ResponseBody.create(MediaType.parse("application/json"), json))

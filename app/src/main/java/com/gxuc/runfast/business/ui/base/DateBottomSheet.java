@@ -34,8 +34,8 @@ public class DateBottomSheet extends BottomSheetDialog {
 
         if (TextUtils.isEmpty(time)) return;
 
-//        String[] times = time.split("-");
-        String[] times = time.split("\\.");
+        String[] times = time.split("-");
+//        String[] times = time.split("\\.");
         final WheelYearPicker yearPicker = (WheelYearPicker) findViewById(R.id.wheel_year_view);
         final WheelMonthPicker monthPicker = (WheelMonthPicker) findViewById(R.id.wheel_month_view);
         final WheelDayPicker dayPicker = (WheelDayPicker) findViewById(R.id.wheel_day_view);
@@ -86,7 +86,7 @@ public class DateBottomSheet extends BottomSheetDialog {
                     int day = dayPicker.getCurrentDay();
 
                     mCallback.onSelectedDate(String.format(Locale.CHINA,
-                            "%d.%s.%s",
+                            "%d-%s-%s",
                             yearPicker.getCurrentYear(),
                             month < 10 ? "0" + month : month,
                             day < 10 ? "0" + day : day

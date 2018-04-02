@@ -28,7 +28,7 @@ class StateViewModel extends BaseViewModel {
                 .compose(RxLifecycle.bindLifecycle(this))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success) {
                             mNavigator.onChangeStateSuccess();
                         } else {

@@ -65,7 +65,7 @@ public class GoodsViewModel extends BaseViewModel {
                 })
                 .subscribe(new ResponseSubscriber<List<GoodsSort>>(mContext) {
                     @Override
-                    public void onNext(List<GoodsSort> sorts) {
+                    public void onSuccess(List<GoodsSort> sorts) {
                         sortAdapter.swap(generateSortModels(sorts));
                         goodsAdapter.swap(generateGoodsModels(mRepo.getGoodsList()));
                     }
@@ -89,7 +89,7 @@ public class GoodsViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success) {
                             List<EpoxyModel<?>> models = goodsAdapter.getModels();
                             for (EpoxyModel<?> model : models) {
@@ -119,7 +119,7 @@ public class GoodsViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success) {
                             notifyItem(goods);
                         }

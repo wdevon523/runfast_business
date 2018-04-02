@@ -65,7 +65,7 @@ public class LoginViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<LoginResponse>(mContext) {
                     @Override
-                    public void onNext(LoginResponse response) {
+                    public void onSuccess(LoginResponse response) {
                         if (response.success) {
                             mRepo.successLogin(response.user);
                             mNavigator.onLoginSuccess();

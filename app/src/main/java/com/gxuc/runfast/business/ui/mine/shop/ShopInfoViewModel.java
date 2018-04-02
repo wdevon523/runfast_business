@@ -87,7 +87,7 @@ public class ShopInfoViewModel extends BaseViewModel {
                 .doFinally(() -> mLoadingCallback.onFirstLoadFinish())
                 .subscribe(new ResponseSubscriber<Business>(mContext) {
                     @Override
-                    public void onNext(Business business) {
+                    public void onSuccess(Business business) {
                         mRepo.savePhone(business.phone);
                         mBusinessObservable.set(business);
                     }
@@ -102,7 +102,7 @@ public class ShopInfoViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success) {
                             mRepo.setAutomatic(isAutomatic.get());
                             mNavigator.onUpdateSuccess();
@@ -128,7 +128,7 @@ public class ShopInfoViewModel extends BaseViewModel {
                     })
                     .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                         @Override
-                        public void onNext(BaseResponse response) {
+                        public void onSuccess(BaseResponse response) {
                             if (!response.success) {
                                 toast(response.msg);
                             }

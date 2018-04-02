@@ -112,7 +112,7 @@ public class MonthlyViewModel extends BaseViewModel {
                 })
                 .subscribe(new ResponseSubscriber<List<Monthly>>(mContext) {
                     @Override
-                    public void onNext(List<Monthly> monthlies) {
+                    public void onSuccess(List<Monthly> monthlies) {
                         if (page == 1 && !adapter.isEmpty()) {
                             adapter.swap(generateMonthlyModels(monthlies));
                         } else {

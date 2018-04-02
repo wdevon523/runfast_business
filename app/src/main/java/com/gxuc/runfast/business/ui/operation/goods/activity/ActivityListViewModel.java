@@ -82,7 +82,7 @@ public class ActivityListViewModel extends BaseViewModel {
                 })
                 .subscribe(new ResponseSubscriber<List<Activity>>(mContext) {
                     @Override
-                    public void onNext(List<Activity> activities) {
+                    public void onSuccess(List<Activity> activities) {
                         if (page == 1 && !mAdapter.isEmpty()) {
                             mAdapter.swap(generateActivityModels(activities));
                         } else {
@@ -116,7 +116,7 @@ public class ActivityListViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.onRefreshFinish())
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
 //                        if (response.success || "操作成功！".equals(response.msg)) {
 //                            status.set(status.get() % 2 + 1);
 //                            statusName.set("恢复活动".equals(statusName.get()) ? "暂停活动" : "恢复活动");

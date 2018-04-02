@@ -51,7 +51,7 @@ public class CashViewModel extends BaseViewModel {
                 .doFinally(() -> mLoadingCallback.onFirstLoadFinish())
                 .subscribe(new ResponseSubscriber<CashInfo>(mContext) {
                     @Override
-                    public void onNext(CashInfo cashInfo) {
+                    public void onSuccess(CashInfo cashInfo) {
                         mCashInfoObservable.set(cashInfo);
                     }
                 });
@@ -64,7 +64,7 @@ public class CashViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success || "申请成功！".equals(response.msg)) {
                             toast("提现申请成功");
                             start();

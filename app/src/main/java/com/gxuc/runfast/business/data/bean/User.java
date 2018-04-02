@@ -7,7 +7,7 @@ public class User {
     public long id;
     public String name;
     public String accounts;
-    public Object password;
+    public String password;
     public long businessId;
     public String businessName;
     public Object purview;

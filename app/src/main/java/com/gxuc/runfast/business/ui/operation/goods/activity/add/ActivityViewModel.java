@@ -78,7 +78,7 @@ public class ActivityViewModel extends BaseViewModel {
                 .compose(RxLifecycle.bindLifecycle(this))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success || "添加成功！".equals(response.msg)) {
                             mNavigator.onEditSuccess();
                         }

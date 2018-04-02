@@ -78,7 +78,7 @@ public class CommentDetailViewModel extends BaseViewModel {
                 .doFinally(() -> mLoadingCallback.onFirstLoadFinish())
                 .subscribe(new ResponseSubscriber<Comment>(mContext) {
                     @Override
-                    public void onNext(Comment comment) {
+                    public void onSuccess(Comment comment) {
                         mCommentObservable.set(comment);
                     }
                 });
@@ -95,7 +95,7 @@ public class CommentDetailViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success) {
                             mNavigator.onReplyCommentSuccess();
                         }

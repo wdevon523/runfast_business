@@ -51,7 +51,7 @@ public class BusinessStatisticsViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.onFirstLoadFinish())
                 .subscribe(new ResponseSubscriber<BusinessStatistics>(mContext) {
                     @Override
-                    public void onNext(BusinessStatistics statistics) {
+                    public void onSuccess(BusinessStatistics statistics) {
                         mStatisticsObservable.set(statistics);
                     }
                 });

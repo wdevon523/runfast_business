@@ -77,7 +77,7 @@ public class ArchiveViewModel extends BaseViewModel {
                 .doFinally(() -> mLoadingCallback.onFirstLoadFinish())
                 .subscribe(new ResponseSubscriber<List<Archive>>(mContext) {
                     @Override
-                    public void onNext(List<Archive> archives) {
+                    public void onSuccess(List<Archive> archives) {
                         if (!adapter.isEmpty()) adapter.clear();
                         adapter.addMore(generateArchiveModels(archives));
                         adapter.addFooter(footer);
@@ -121,7 +121,7 @@ public class ArchiveViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success || "删除成功！".equals(response.msg)) {
                             start();
                         } else {
@@ -147,7 +147,7 @@ public class ArchiveViewModel extends BaseViewModel {
                     })
                     .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                         @Override
-                        public void onNext(BaseResponse response) {
+                        public void onSuccess(BaseResponse response) {
                             if (response.success || "添加成功！".equals(response.msg)) {
                                 start();
                             } else {

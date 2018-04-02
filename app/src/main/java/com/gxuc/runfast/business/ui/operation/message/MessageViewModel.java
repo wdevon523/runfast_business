@@ -63,7 +63,7 @@ class MessageViewModel extends BaseViewModel {
                 })
                 .subscribe(new ResponseSubscriber<List<Message>>(mContext) {
                     @Override
-                    public void onNext(List<Message> messages) {
+                    public void onSuccess(List<Message> messages) {
                         if (page == 1 && !mAdapter.isEmpty()) {
                             mAdapter.swap(generateMessageModels(messages));
                         } else {

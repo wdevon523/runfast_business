@@ -100,7 +100,7 @@ public class DayOrderViewModel extends BaseViewModel {
                 })
                 .subscribe(new ResponseSubscriber<List<DayOrder>>(mContext) {
                     @Override
-                    public void onNext(List<DayOrder> orders) {
+                    public void onSuccess(List<DayOrder> orders) {
                         if (page == 1 && !adapter.isEmpty()) {
                             adapter.swap(generateDayOrderModels(orders));
                         } else {

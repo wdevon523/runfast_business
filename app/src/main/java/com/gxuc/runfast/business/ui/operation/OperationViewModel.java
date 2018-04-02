@@ -40,7 +40,7 @@ public class OperationViewModel extends BaseViewModel {
                 .compose(RxLifecycle.bindLifecycle(this))
                 .subscribe(new ResponseSubscriber<Operation>(mContext) {
                     @Override
-                    public void onNext(Operation operation) {
+                    public void onSuccess(Operation operation) {
                         mOperationObservable.set(operation);
                     }
                 });

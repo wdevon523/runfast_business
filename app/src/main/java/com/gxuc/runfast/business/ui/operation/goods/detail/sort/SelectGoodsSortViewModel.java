@@ -50,7 +50,7 @@ public class SelectGoodsSortViewModel extends BaseViewModel {
                 })
                 .subscribe(new ResponseSubscriber<List<GoodsSort>>(mContext) {
                     @Override
-                    public void onNext(List<GoodsSort> sorts) {
+                    public void onSuccess(List<GoodsSort> sorts) {
                         adapter.swap(generateSortModels(sorts));
                     }
                 });

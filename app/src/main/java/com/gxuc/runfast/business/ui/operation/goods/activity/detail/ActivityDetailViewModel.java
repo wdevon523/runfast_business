@@ -89,7 +89,7 @@ public class ActivityDetailViewModel extends BaseViewModel {
                 .doFinally(() -> mCallback.setLoading(false))
                 .subscribe(new ResponseSubscriber<BaseResponse>(mContext) {
                     @Override
-                    public void onNext(BaseResponse response) {
+                    public void onSuccess(BaseResponse response) {
                         if (response.success || "操作成功！".equals(response.msg)) {
                             status.set(status.get() % 2 + 1);
                             statusName.set("恢复活动".equals(statusName.get()) ? "暂停活动" : "恢复活动");

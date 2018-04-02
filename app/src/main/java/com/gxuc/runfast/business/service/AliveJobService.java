@@ -43,8 +43,8 @@ public class AliveJobService extends JobService {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "APP被杀死，重启...", Toast.LENGTH_SHORT)
-                        .show();
+//                Toast.makeText(getApplicationContext(), "APP被杀死，重启...", Toast.LENGTH_SHORT)
+//                        .show();
             }
             // 通知系统任务执行结束
             jobFinished((JobParameters) msg.obj, false);
